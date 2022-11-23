@@ -1,0 +1,18 @@
+#carto {
+    padding-top: 10px;
+    line-height: 0;
+}
+
+#carto h1 {
+    text-align: left;
+    line-height: normal;
+}
+
+#carto img:nth-child(2) {
+    float: left;
+    margin-right: 10px;
+}
+
+#carto img:last-child {
+    margin-top: 10px;
+}

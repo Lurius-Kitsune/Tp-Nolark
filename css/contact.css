@@ -1,0 +1,104 @@
+#contact h1 {
+    margin-top: 10px;
+    text-align: left;
+}
+
+#contact form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 50px;
+    margin-top: 10px;
+}
+
+#contact form fieldset {
+    padding: 10px;
+}
+
+#coordo legend {
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+#coordo label {
+    margin-right: 10px;
+}
+
+#coordo input, #coordo select {
+    flex: 1;
+}
+
+#coordo div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#coordo input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#coordo #marques label {
+    text-transform: capitalize;
+}
+
+#coordo fieldset {
+    width: fit-content;
+    margin: auto;
+}
+
+#motif {
+    align-self: flex-start;
+}
+
+#motif legend {
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+#motif div {
+    margin: 10px;
+}
+
+#motif label {
+    margin-left: 10px;
+}
+
+#controles {
+    margin-top: 10px;
+}
+
+#controles input {
+    padding: 10px;
+}
+
+#controles input:first-child {
+    margin-right: 10px;
+}
+
+input:valid, :not(input[type="submit"]) {
+    color: green;
+}
+input:invalid {
+    color: red;
+}
+
+#coordo div.input-validation {
+    margin: 0;
+}
+
+input[type="text"]:valid ~ .input-validation::before,
+input[type="email"]:valid ~ .input-validation::before {
+    content: "✔";
+    margin-left: 5px;
+    color: green;
+}
+
+@media screen and (max-width: 576px){
+    #carto{
+        width: 100%;
+    }
+    #carto img:nth-child(2){
+        width: 100%
+    }
+}

@@ -1,0 +1,273 @@
+* {
+    font-family: 'Montserrat'; /* Police par défaut */
+    box-sizing: border-box; /* Les tailles de conteneurs incluent bordures et 
+                               remplissages */
+    margin: 0; /* Mise à 0 des marges externes */
+    padding: 0; /* Mise à 0 des marges internes */
+    text-decoration: none; /* Suppression de la mise en forme habituelle des liens 
+                             (soulignement) */
+}
+
+/* Définition de la police "Montserrat" */
+@font-face{
+    font-family: "Montserrat";
+    src: url('polices/Montserrat-Regular.ttf') format("truetype");
+}
+
+body {
+    display: flex; /* Ce conteneur est "flexible" */
+    justify-content: center; /* Les éléments portés sont centrés à l'horizontal */
+    flex-direction: column; /* Les éléments sont empilés */
+    align-items: center; /* Les éléments portés sont centrés à la verticale */
+    width: 100%; /* La page occupe toute la largeur */
+}
+
+header {
+    width: 916px; /* Les headers et sections occupent 916px (taille de la bannière) */
+    display: flex; /* Ce conteneur est "flexible" */
+    flex-direction: column; /* Les éléments sont empilés */
+}
+nav input {
+    display: none;
+}
+nav ul {
+    display: flex; /* Ce conteneur est "flexible" */
+    flex-direction: row; /* Les éléments sont mis côte à côte */
+    justify-content: space-between; /* Les éléments sont répartis équitablement */
+    background-color: black; /* Couleur du fond */
+}
+nav ul li {
+    display: flex; /* Ce conteneur est "flexible" */
+    justify-content: center; /* Les éléments portés sont centrés à l'horizontal */
+    list-style-type: none; /* Cette liste n'a pas de puce */
+    font-size: x-large; /* Le texte est grossi en XL */
+    flex-grow: 1; /* L'espace occupé est élargie */
+}
+
+nav ul li a {
+    padding: 10px; /* Marge intérieure */
+    color: white; /* Couleur du texte */
+}
+nav ul li:hover {
+    background-color:#9a330a; /* Couleur du fond au passage de la souris */
+}
+section {
+    width: 916px; /* Les sections occupent 916px (taille de la bannière) */
+}
+
+#principal {
+    margin-top: 10px; /* Marge supérieure */
+    display: flex; /* Ce conteneur est "flexible" */
+    flex-direction: row; /* Les éléments sont mis côte à côte */
+    text-align: justify; /* Alignement du texte : justifié */
+}
+#principal article {
+    flex: 1; /* Écriture raccourcie : 
+                flex-grow: 1 et flex-shrink:1 = Chaque élément occupe l'espace idéal 
+                (le + et le - à la fois) */
+}
+#principal article img {
+    float: left; /* Mise en élément "flottant" contre lequel on peut venir se poser */
+    margin-right: 10px; /* Marge de droite */
+}
+#principal article p {
+    padding-top: 16px; /* Marge intérieure supérieure */
+}
+#principal aside {
+    display: flex; /* Ce conteneur est "flexible" */
+    flex-direction: column; /* Les éléments sont empilés */
+    margin-left: 16px; /* Marge de gauche */
+    width: 238px; /* Largeur du conteneur (taille de l'image de fond) */
+    background: transparent url('images/post-it-conseils.png') no-repeat 0 0; /* Fond */
+    font-size: small; /* Le texte est réduit en S */
+    font-weight: bold; /* Le texte est mis en gras */
+    padding-left: 35px; /* Marge intérieure gauche */
+    padding-bottom: 60px; /* Marge intérieure basse */
+}
+#principal aside img:first-child{
+    margin-top: 110px; /* Marge supérieure du premier élément qui est une image  */
+}
+#principal aside img {
+    align-self: center; /* Placement au centre */
+}
+#principal aside img:nth-child(3){
+    margin-top: 20px; /* Marge supérieure du troisième élément qui est une image */
+}
+#thematique {
+    display: flex; /* Ce conteneur est "flexible" */
+    flex-wrap: wrap; /* Les éléments sont placés sur plusieurs lignes */
+    margin-bottom: 45px; /* Marge basse (correspond à la hauteur du footer + 10px) */
+}
+
+h1 {
+    color: #ff6811; /* Couleur du texte */
+    text-align: center; /* Le texte est centré */
+    font-size: xx-large; /* Le texte est grossi en XXL */
+}
+
+#thematique h1 {
+    width: 100%; /* Le titre occupe toute la largeur */
+    margin-bottom: 10px; /* Marge basse */
+}
+
+#thematique article {
+    flex: 1; /* flex-grow: 1 et flex-shrink:1 = Chaque élément occupe l'espace idéal (le + et le - à la fois) */
+    height: 256px; /* Hauteur */
+    border: transparent thin solid; /* Bordure transparente */
+    display: flex; /* Ce conteneur est "flexible" */
+    justify-content: center; /* Les éléments portés sont centrés à l'horizontal */
+}
+
+/* Définition de la police "Nordic" */
+@font-face{
+    font-family: "Nordic";
+    src: url('polices/Nordic.ttf') format("truetype");
+}
+
+#thematique a {
+    font-family: 'Nordic'; /* Police à utiliser */
+    font-size: xx-large; /* Le texte est grossi en XXL */
+    color: black; /* Couleur du texte */
+
+}
+
+#gauche:hover, #milieu:hover, #droite:hover {
+    border: black thin solid; /* Bordure au passage de la souris */
+    border-radius: 10px; /* Bords arrondis au passage de la souris */
+    background-color: #ededed; /* Fond au passage de la souris */
+}
+
+#gauche {
+    background: transparent url('images/casqueroute.png') no-repeat center 10px; /* Fond */
+}
+
+#milieu {
+    background: transparent url('images/casquecross.png') no-repeat center 0; /* Fond */
+}
+
+#droite {
+    background: transparent url('images/casquepiste.png') no-repeat center 10px; /* Fond */
+}
+
+footer {
+    display: flex; /* Ce conteneur est "flexible" */
+    justify-content: center; /* Les éléments portés sont centrés à l'horizontal */
+    align-items: center; /* Les éléments portés sont centrés à la verticale */
+    position: fixed; /* Le conteneur est fixé en fonction de ses coordonnées (à 0px du bas) */
+    bottom: 0px; /* Bas */
+    height: 35px; /* Hauteur */
+    width: 100%; /* Le pied de page occupe toute la largeur */
+    background-color:#2d2d2d; /* Couleur de fond */
+    color: #bbb; /* Couleur du texte */
+    text-align:center; /* Texte centré */
+}
+
+footer p {
+    font-size: large; /* Le texte est grossi en L */
+}
+
+footer a{
+    color: inherit; /* Couleur du lien identique à celle du conteneur */
+}
+
+@media screen and (max-width:576px){
+    *{
+        box-sizing: border-box
+    }
+    body {
+        font-size: large;
+    }
+
+    header, section {
+        width: auto;
+    }
+
+
+    header img {
+        width: 100%; /* Bannière sur toute la largeur */
+        background-color: black; /* Extension artificielle noire */
+        padding-bottom: 15px; /* du bas de l'image sur 15 pixels */
+    }
+
+    /*ICONE BURGER*/
+    nav {
+        position: relative;
+        top: 7px;
+        left: 7px;
+        z-index: 1; /* La barre de navigation devra être au premier plan */
+    }
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        margin: -39px 0 0 -60px;
+        padding: 50px 10px 10px 60px;
+        background: black;
+        list-style-type: none;
+        transform: translate(-100%, 0);
+        transition: transform 0.5s ease;
+
+    }
+
+    nav ul li {
+        display: list-item;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    nav input {
+        display: block;
+        position: absolute;
+        opacity: 0;
+        z-index: 2;
+    }
+
+    nav span {
+        display: block;
+        width: 30px;
+        height: 5px;
+        margin-bottom: 5px;
+        position: relative;
+        background: black;
+        border-radius: 3px;
+        z-index: 1; /* En dessous de l'input défini avant */
+        transition: transform 0.5s ease, background 0.5s ease;
+    }
+
+    nav input:checked ~ span {
+        background: white;
+    }
+
+    nav input:checked ~ span:nth-child(2) {
+        transform: rotate(45deg) translate(7px, 5px);
+    }
+    nav input:checked ~ span:nth-child(4) {
+        transform: rotate(-45deg) translate(10px, -6px);
+    }
+
+    nav input:checked ~ span:nth-child(3) {
+        opacity: 0;
+    }
+
+    nav input:checked ~ ul {
+        transform: none;
+    }
+    
+    /*Article*/
+    #principal aside {
+        display: none;
+    }
+    /*Colonne casque*/
+    #thematique {
+        display: grid;
+    }
+    
+    #thematique h1{
+        font-size: x-large;
+    }
+    #thematique a{
+        font-size: x-large;
+    }
+    
+}

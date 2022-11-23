@@ -1,0 +1,143 @@
+#casques {
+    display: flex; /* Ce conteneur est "flexible" */
+    flex-wrap: wrap; /* Les éléments flexibles sont disposés sur plusieurs lignes */
+    justify-content: flex-start; /* Les éléments sont répartis équitablement sur la ligne */
+    margin-bottom: 45px; /* Marge inférieure */
+}
+
+#casques article {
+    width: 163px; /* Largeur de l'article */
+    height: 275px; /* Hauteur de l'article */
+    margin: 10px; /* Marges extérieures */
+    padding: 5px; /* Marges intérieures */
+    border: white thin solid; /* Bordure blanche */
+    position: relative; /* Position relative */
+}
+
+#casques article img {
+    margin-left: 6px; /* Marge gauche */
+}
+
+#casques article:hover {
+    border: #bbb thin solid; /* Bordure au survol */
+}
+
+#casques .prix {
+    color: red; /* Couleur du texte */
+    font-weight: bold; /* Texte en gras */
+    margin-bottom: 10px; /* Marge basse */
+}
+
+#casques .marque {
+    text-transform : uppercase;  /* Mise en majuscules du texte */
+    font-family: 'Nordic'; /* Police de caractères */
+    font-size: x-large; /* Le texte est grossi en XL */
+    display: inline; /* Affichage à la ligne pour éviter la superposition avec le stock */
+    white-space: nowrap; /* Pas de passage à la ligne */
+    font-weight: bold; /* Texte en gras */
+}
+
+#casques .modele {
+    text-transform : capitalize; /* Toutes les premières lettres en majuscules */
+}
+
+#casques .stockok, #casques .stockko {
+    float: right; /* Alignement flottant à droite */
+    text-transform : uppercase; /* Mise en majuscules du texte */
+    padding: 2px; /* Marges intérieures */
+}
+
+#casques .stockok {
+    background-color: chartreuse; /* Couleur du fond */
+}
+
+#casques .stockko {
+    background-color: red; /* Couleur du fond */
+    color: white; /* Couleur du texte */
+}
+
+[data-tip] {
+    position: relative; /* Position relative à l'existant */
+    cursor: help; /* Curseur en forme de point d'interrogation */
+}
+
+[data-tip]:hover::before{
+    content: ''; /* Contenu vide */
+    top: 12px; /* Position du haut */
+    left: 10px; /* Position de l'angle gauche */
+    position:absolute; /* Position absolue */
+
+    /* Création d'un triangle à l'aide des bordures */
+    border-bottom: 12px solid fuchsia;
+    border-top: 5px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+
+}
+
+[data-tip]:hover::after {
+    text-transform : none; /* Annulation de la transformation précédente */
+    content: attr(data-tip); /* Le contenu correspond à la valeur de l'attribut data-tip présent dans l'HTML */
+    position: absolute; /* Position absolue */
+    top: 28px; /* Position du haut */
+    left: 10px; /* Position de l'angle gauche */
+    white-space: nowrap; /* pas de retour à la ligne dans l'infobulle' */
+    padding: 5px 10px; /* Marges intérieures (Haut/Bas Gauche/Droite)*/
+    background-color: fuchsia; /* Couleur du fond */
+    color: white; /* Couleur du texte */
+    z-index: 1; /* L'infobulle sera au dessus du reste */
+}
+
+#casques .classement {
+    width: 85px; /* Largeur de l'image */
+    height: 18px; /* Hauteur de l'image */
+    position: absolute; /* Position absolue */
+    bottom: 0; /* Bas */
+    object-fit: none; /* Pas de redimensionnement de l'image */
+    margin: 0 39px; /* Marges extérieures */
+}
+
+#casques .classement.classement00 {
+    object-position: 0 0;
+}
+
+#casques .classement.classement05 {
+    object-position: 0 -18px;
+}
+
+#casques .classement.classement10 {
+    object-position: 0 -36px;
+}
+
+#casques .classement.classement15 {
+    object-position: 0 -54px;
+}
+
+#casques .classement.classement20 {
+    object-position: 0 -72px;
+}
+
+#casques .classement.classement25 {
+    object-position: 0 -90px; 
+}
+
+#casques .classement.classement30 {
+    object-position: 0 -108px;
+}
+
+#casques .classement.classement35 {
+    object-position: 0 -126px;
+}
+
+#casques .classement.classement40 {
+    object-position: 0 -144px;
+}
+
+#casques .classement.classement45 {
+    object-position: 0 -162px;
+}
+
+#casques .classement.classement50 {
+    object-position: 0 -180px;
+}
+
