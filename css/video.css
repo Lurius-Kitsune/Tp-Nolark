@@ -42,3 +42,17 @@
     }
 }
 
+@media screen and (min-width:576px) and (max-width:768px){
+    #video {
+        flex-direction: column;
+    }
+    
+    #video article {
+        width: 100%
+    }
+    #video iframe {
+            margin: 0px 9%;
+            width: 82%;
+    }
+}
+
