@@ -274,10 +274,6 @@ footer a{
     header, section {
         width: auto;
     }
-    
-    body {
-        font-size: large;
-    }
 
     header, section {
         width: auto;
@@ -362,6 +358,7 @@ footer a{
     /*Colonne casque*/
     #thematique {
         flex-direction: row; /* Sur tablette, les casques de l'accueil sont côte à côte */
+        width: 100%;
     }
 
     #thematique h1{
