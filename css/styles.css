@@ -172,9 +172,6 @@ footer a{
 }
 
 @media screen and (max-width:576px){ /*Version mobile */
-    *{
-        box-sizing: border-box
-    }
     body {
         font-size: large;
     }
