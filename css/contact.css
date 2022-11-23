@@ -102,3 +102,12 @@ input[type="email"]:valid ~ .input-validation::before {
         width: 100%
     }
 }
+@media screen and (min-width:576px) and (max-width:768px){
+    #carto img{
+        width: 49%;
+        margin-right: 1%;
+    }
+    #carto img:nth-child(2){
+        width: 100%
+    }
+}
