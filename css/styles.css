@@ -271,9 +271,105 @@ footer a{
 }
 
 @media screen and (min-width:576px) and (max-width:768px){
+    header, section {
+        width: auto;
+    }
     
+    body {
+        font-size: large;
+    }
+
+    header, section {
+        width: auto;
+    }
+
+
+    header img {
+        width: 100%; /* Bannière sur toute la largeur */
+        background-color: black; /* Extension artificielle noire */
+        padding-bottom: 15px; /* du bas de l'image sur 15 pixels */
+    }
+
+    /*ICONE BURGER*/
+    nav {
+        position: relative;
+        top: 7px;
+        left: 7px;
+        z-index: 1; /* La barre de navigation devra être au premier plan */
+    }
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        margin: -39px 0 0 -60px;
+        padding: 50px 10px 10px 60px;
+        background: black;
+        list-style-type: none;
+        transform: translate(-100%, 0);
+        transition: transform 0.5s ease;
+
+    }
+
+    nav ul li {
+        display: list-item;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    nav input {
+        display: block;
+        position: absolute;
+        opacity: 0;
+        z-index: 2;
+    }
+
+    nav span {
+        display: block;
+        width: 30px;
+        height: 5px;
+        margin-bottom: 5px;
+        position: relative;
+        background: black;
+        border-radius: 3px;
+        z-index: 1; /* En dessous de l'input défini avant */
+        transition: transform 0.5s ease, background 0.5s ease;
+    }
+
+    nav input:checked ~ span {
+        background: white;
+    }
+
+    nav input:checked ~ span:nth-child(2) {
+        transform: rotate(45deg) translate(7px, 5px);
+    }
+    nav input:checked ~ span:nth-child(4) {
+        transform: rotate(-45deg) translate(10px, -6px);
+    }
+
+    nav input:checked ~ span:nth-child(3) {
+        opacity: 0;
+    }
+
+    nav input:checked ~ ul {
+        transform: none;
+    }
+
+    /*Article*/
+    #principal aside {
+        display: none;
+    }
+    /*Colonne casque*/
     #thematique {
         flex-direction: row; /* Sur tablette, les casques de l'accueil sont côte à côte */
     }
+
+    #thematique h1{
+        font-size: x-large;
+    }
+    #thematique a{
+        font-size: x-large;
+    }
+
 
 }
