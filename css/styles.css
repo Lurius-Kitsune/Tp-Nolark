@@ -35,6 +35,7 @@ nav ul {
     flex-direction: row; /* Les éléments sont mis côte à côte */
     justify-content: space-between; /* Les éléments sont répartis équitablement */
     background-color: black; /* Couleur du fond */
+    margin-top: -4px
 }
 nav ul li {
     display: flex; /* Ce conteneur est "flexible" */
