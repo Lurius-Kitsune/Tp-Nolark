@@ -170,7 +170,7 @@ footer a{
     color: inherit; /* Couleur du lien identique à celle du conteneur */
 }
 
-@media screen and (max-width:576px){
+@media screen and (max-width:576px){ /*Version mobile */
     *{
         box-sizing: border-box
     }
@@ -253,7 +253,7 @@ footer a{
     nav input:checked ~ ul {
         transform: none;
     }
-    
+
     /*Article*/
     #principal aside {
         display: none;
@@ -262,12 +262,20 @@ footer a{
     #thematique {
         display: grid;
     }
-    
+
     #thematique h1{
         font-size: x-large;
     }
     #thematique a{
         font-size: x-large;
     }
+
+}
+
+@media screen and (min-width:576px) and (max-width:768px){
     
+    #thematique {
+        flex-direction: row; /* Sur tablette, les casques de l'accueil sont côte à côte */
+    }
+
 }
