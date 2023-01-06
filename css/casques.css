@@ -143,18 +143,14 @@
 @media print {
     * {
         float: left !important;
+        display: block !important; /* pour prise en compte de break-inside */
     }
-
-    header, nav, footer, #video, #casques article img.classement {
+    title, header, nav, footer, #video, #casques article img.classement {
         display: none !important;
     }
-
     body, #casques article p.marque {
         font-size: 15pt;
         font-family: serif;
-    }
-    #casques {
-        display : block;
     }
     #casques article {
         width: 100%;
@@ -163,42 +159,36 @@
         padding: 0;
         break-inside: avoid;
     }
-
     #casques article p.stockok, #casques article p.stockko {
         background-color: transparent;
         width: 200px;
     }
-
-    #casques article p.stockok, #casques article p.stockko, #casques article p.prix,
-    #casques article p.marque, #casques article p.modele {
+    #casques article p.stockok, #casques article p.stockko,
+    #casques article p.prix, #casques article p.marque,
+    #casques article p.modele {
         margin-right: 10px;
         padding-top: 30px;
     }
-
     #casques article p.stockko {
         color: red;
     }
-
-    #casques article p.stockok abbr:after, #casques article p.stockko abbr:after {
+    #casques article p.stockok abbr:after,
+    #casques article p.stockko abbr:after {
         text-transform: none;
         content: " : " attr(data-tip);
     }
-
     #casques article p.stockko abbr:before {
         text-transform: none;
         content: "/!\\ ";
     }
-
     #casques article p.prix {
         width: 90px;
         font-weight: normal;
         text-align: right;
     }
-    
     #casques article p.marque {
         width: 125px;
     }
-    
     #casques article p.modele {
         width: 230px;
     }
