@@ -5,7 +5,11 @@ function validEnvoi() {
     } else if (window.document.querySelector("#i_email").value === "") {
         alert("L'email doit être rempli"); // On affiche un message
     } else {
-        window.document.querySelector("#form_contact").submit(); // On peut envoyer
+        let question = "Souhaitez-vous réellement utiliser l'adresse suivante : "
+                + window.document.querySelector("#i_email").value;
+        if (confirm(question)) {
+            window.document.querySelector("#form_contact").submit(); // OK envoyer
+        }
     }
 }
 window.addEventListener("load", function () {
