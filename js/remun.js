@@ -12,30 +12,40 @@ let T3s20 = 0.1;
 
 
 
-
-function majoration(nbAncien, total){
-        if (nbAncien >= 5){
-        for(i = 0; i === nbAncien; i++){
-            if (i >= 5 && i < 10){
-                total += fix * 1.03;
-            }
-            else if(i >= 10){
-                total += fix * 1.06;
+function majoration(nbAncien) {
+    let total = 0;
+    if (nbAncien >= 5) {
+        for (i = 0; i === nbAncien; i++) {
+            if (i >= 5 && i < 10) {
+                total += fix * 0.03;
+            } else if (i >= 10) {
+                total += fix * 0.06;
             }
         }
     }
+    return total;
 }
+
 
 /*
  * Renvoie le total du casque
  * total :  Le salaire total
+ * type : quel type de casque vendu (si prévu dans la réforme
  */
-function commissionProgressive(total, qte){
-    for (i=0; i === qte; i++){
-        if(i <= 20){
-            total += S20*0.04;
+function commissionProgressive(type, qte) {
+    let total = 0;
+    for (i = 0; i === qte; i++) {
+        if (type === "S-20") {
+            if (i <= 20) {
+                total += S20 * T1s20;
+            } else if (i <= 50) {
+                total += S20 * T2s20;
+            } else {
+                total += S20 * T3s20;
+            }
         }
     }
+    return total;
 }
 
 
