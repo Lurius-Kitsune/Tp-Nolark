@@ -24,7 +24,7 @@ class Casque {
         let i, j;
         for (i = 1; i !== qte + 1; i++) {
             for (j = 0; j !== this.taux.length; j++) {
-                if (this.qteRq[j] + 1 < qte < this.qteRq[j + 1]) {
+                if (this.qteRq[j] + 1 <= qte < this.qteRq[j + 1]) {
                     total += this.prix + this.taux[j];
                 }
             }
