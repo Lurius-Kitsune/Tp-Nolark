@@ -7,17 +7,28 @@ let XSp = 350;
 
 
 class Casque {
-    constructor(nom, prix, taux1, taux2, taux3) {
+    constructor(nom, prix, taux1, taux2, taux3, qte) {
         this.nom = nom;
         this.prix = prix;
         this.taux1 = taux1;
         this.taux2 = taux2;
         this.taux3 = taux3;
+        this.qteTaux = qte;
+    }
+    
+    Commission(prix, taux1, qteTaux){
+        let valut = 20;
     }
 }
 
-let s20 = new Casque("S-20",140 ,0.04 , 0.06, 0.1);
+let s20 = new Casque("S-20",140 ,0.04 , 0.06, 0.1, 0);
+let Multi = new Casque("S-20",140 ,0.04 , 0.06, 0.1, 0);
 
+/**
+ * 
+ * @param {type} nbAncien Le nombre d'ancienneté
+ * @returns {Number} Renvoie la valeur total 
+ */
 function majoration(nbAncien) {
     let total = 0;
     if (nbAncien >= 5) {
