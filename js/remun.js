@@ -7,22 +7,30 @@ let XSp = 350;
 
 
 class Casque {
-    constructor(nom, prix, taux1, taux2, taux3, qte) {
+    constructor(nom, prix, taux, qteRq) {
         this.nom = nom;
         this.prix = prix;
-        this.taux1 = taux1;
-        this.taux2 = taux2;
-        this.taux3 = taux3;
-        this.qteTaux = qte;
+        this.taux =  taux;
+        this.qteRq = [0,...qteRq,99999999];
     }
     
-    Commission(prix, taux1, qteTaux){
-        let valut = 20;
+    Commission(qte){
+        let total = 0;
+        let i, j;
+        for(i=1; i!==qte+1; i++){
+            for(j = 0; j!==this.taux.length; j++) {
+                console.log(this.taux.length, j);
+                if (this.qteRq[j]+1<qte<this.qteRq[j+1]){
+                    total += this.prix + this.taux[j];
+                }
+            }
+        }
+        return total;
     }
 }
 
-let s20 = new Casque("S-20",140 ,0.04 , 0.06, 0.1, 0);
-let Multi = new Casque("S-20",140 ,0.04 , 0.06, 0.1, 0);
+let s20 = new Casque("S-20",140 ,[0.04 , 0.06, 0.1], [20,50]);
+
 
 /**
  * 
@@ -37,28 +45,6 @@ function majoration(nbAncien) {
                 total += fix * 0.03;
             } else if (i >= 10) {
                 total += fix * 0.06;
-            }
-        }
-    }
-    return total;
-}
-
-
-/*
- * Renvoie le total du casque
- * total :  Le salaire total
- * casque : quel casque vendu (Class Casque)
- */
-function commissionProgressive(casque, qte) {
-    let total = 0;
-    for (i = 0; i !== qte; i++) {
-        if (casque.nom === 'S-20') {
-            if (i <= 20) {
-                total += casque.prix * casque.taux1;
-            } else if (i <= 50) {
-                total += casque.prix * casque.taux2;
-            } else {
-                total += casque.prix * casque.taux3;
             }
         }
     }
