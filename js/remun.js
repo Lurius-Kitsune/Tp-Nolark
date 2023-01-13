@@ -2,9 +2,6 @@ const fix = 1100; // Rémunération fixé sans majoration d'anciennet
 let nbAncien = parseInt(window.document.querySelector("#num_ancien").value); // Int
 let salaire = 0;
 
-let Multi = 180;
-let XSp = 350;
-
 
 /***
  * 
@@ -15,12 +12,12 @@ class Casque {
         this.nom = nom;
         this.prix = prix;
         this.taux =  taux;
-        this.qteRq = [0,...qteRq,99999999];
+        this.qteRq = [...qteRq,99999999];
     }
     
     /***
      * 
-     * @param {type} qte La quantité de casque vendu
+     * @param {int} qte La quantité de casque vendu
      * @returns {Number} Renvoie la comission toucher à la vente total de Casque
      */
     Commission(qte){
@@ -28,7 +25,6 @@ class Casque {
         let i, j;
         for(i=1; i!==qte+1; i++){
             for(j = 0; j!==this.taux.length; j++) {
-                console.log(this.taux.length, j);
                 if (this.qteRq[j]+1<qte<this.qteRq[j+1]){
                     total += this.prix + this.taux[j];
                 }
@@ -38,12 +34,15 @@ class Casque {
     }
 }
 
-let s20 = new Casque("S-20",140 ,[0.04 , 0.06, 0.1], [20,50]);
+let Multi = new Casque("Multitec",180 ,[0.04 , 0.06, 0.1], [20,50]);
+let XSpirit = new Casque("X-Spirit",350 ,[0.06],[50]);
+let s20 = new Casque("S-20",140, [0.02],[0]);
 
+salaire = fix + majoration(50) + Multi.Commission(50)+ s20.Commission(50)+ XSpirit.Commission(50);
 
 /**
  * 
- * @param {type} nbAncien Le nombre d'ancienneté
+ * @param {int} nbAncien Le nombre d'ancienneté
  * @returns {Number} Renvoie la valeur total 
  */
 function majoration(nbAncien) {
