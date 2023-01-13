@@ -2,15 +2,21 @@ const fix = 1100; // Rémunération fixé sans majoration d'anciennet
 let nbAncien = parseInt(window.document.querySelector("#num_ancien").value); // Int
 let salaire = 0;
 
-let S20 = 140;
 let Multi = 180;
 let XSp = 350;
 
-let T1s20 = 0.04;
-let T2s20 = 0.06;
-let T3s20 = 0.1;
 
+class Casque {
+    constructor(nom, prix, taux1, taux2, taux3) {
+        this.nom = nom;
+        this.prix = prix;
+        this.taux1 = taux1;
+        this.taux2 = taux2;
+        this.taux3 = taux3;
+    }
+}
 
+let s20 = new Casque("S-20",140 ,0.04 , 0.06, 0.1);
 
 function majoration(nbAncien) {
     let total = 0;
@@ -30,18 +36,18 @@ function majoration(nbAncien) {
 /*
  * Renvoie le total du casque
  * total :  Le salaire total
- * type : quel type de casque vendu (si prévu dans la réforme
+ * casque : quel casque vendu (Class Casque)
  */
-function commissionProgressive(type, qte) {
+function commissionProgressive(casque, qte) {
     let total = 0;
     for (i = 0; i === qte; i++) {
-        if (type === "S-20") {
+        if (casque.nom === 'S-20') {
             if (i <= 20) {
-                total += S20 * T1s20;
+                total += casque.prix * casque.taux1;
             } else if (i <= 50) {
-                total += S20 * T2s20;
+                total += casque.prix * casque.taux2;
             } else {
-                total += S20 * T3s20;
+                total += casque.prix * casque.taux3;
             }
         }
     }
