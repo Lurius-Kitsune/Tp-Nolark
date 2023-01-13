@@ -6,6 +6,10 @@ let Multi = 180;
 let XSp = 350;
 
 
+/***
+ * 
+ * @type type Classe
+ */
 class Casque {
     constructor(nom, prix, taux, qteRq) {
         this.nom = nom;
@@ -14,6 +18,11 @@ class Casque {
         this.qteRq = [0,...qteRq,99999999];
     }
     
+    /***
+     * 
+     * @param {type} qte La quantité de casque vendu
+     * @returns {Number} Renvoie la comission toucher à la vente total de Casque
+     */
     Commission(qte){
         let total = 0;
         let i, j;
