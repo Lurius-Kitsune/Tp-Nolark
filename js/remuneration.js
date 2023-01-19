@@ -16,7 +16,7 @@ class Casque {
     
     /***
      * 
-     * @param {int} qte La quantité de casque vendu
+     * @param {Number} qte La quantité de casque vendu
      * @returns {Number} Renvoie la comission toucher à la vente total de Casque
      */
     Commission(qte) {
@@ -41,7 +41,7 @@ salaire = fix + majoration(50) + Multi.Commission(1) + s20.Commission(1) + XSpir
 
 /**
  * 
- * @param {int} nbAncien Le nombre d'ancienneté
+ * @param {Number} nbAncien Le nombre d'ancienneté
  * @returns {Number} Renvoie la valeur total 
  */
 function majoration(nbAncien) {
