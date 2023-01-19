@@ -3,7 +3,7 @@ function calc_sim() {
         window.document.querySelector("#num_ancien").value === "" ||
         window.document.querySelector("#prix_casque").value === "" ||
         window.document.querySelector("#com_km").value === "") {
-        alert("Veuillez remplir toute les valeur"); // On affiche un message
+        alert("Veuillez remplir toute les valeurs"); // On affiche un message
     }
     else {
         if (window.document.querySelector("#lst_typecasque").value == "Multi") {
@@ -25,7 +25,7 @@ function calc_sim() {
  * Attend envoie :
  */
 window.addEventListener("load", function () {
-    window.document.querySelector("#btn_envoyer").addEventListener("click", validEnvoi);
+    window.document.querySelector("#btn_envoyer").addEventListener("click", calc_sim);
 });
 
 
