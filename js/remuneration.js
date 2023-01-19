@@ -1,38 +1,4 @@
-function calc_sim() {
-    if (window.document.querySelector("#lst_typecasque").value === "" ||
-        window.document.querySelector("#num_ancien").value === "" ||
-        window.document.querySelector("#prix_casque").value === "" ||
-        window.document.querySelector("#com_km").value === "") {
-        alert("Veuillez remplir toute les valeurs"); // On affiche un message
-    }
-    else {
-        if (window.document.querySelector("#lst_typecasque").value == "Multi") {
-            salaire += Multi.Commission(parseInt(window.document.querySelector("#prix_casque").value));
-        }
-        else if (window.document.querySelector("#lst_typecasque").value == "s20") {
-            salaire += s20.Commission(parseInt(window.document.querySelector("#prix_casque").value));
-        }
-        else {
-            salaire += XSpirit.Commission(parseInt(window.document.querySelector("#prix_casque").value));
-        }
-        salaire += majoration(nbAncien)
-
-        window.document.querySelector("#resultat").innerHTML = "La rémunération sera de : " + salaire + " €";
-    } 
-}
-
-/**
- * Attend envoie :
- */
-window.addEventListener("load", function () {
-    window.document.querySelector("#btn_envoyer").addEventListener("click", calc_sim);
-});
-
-
-
 const fix = 1100; // Rémunération fixé sans majoration d'anciennet
-let nbAncien = parseInt(window.document.querySelector("#num_ancien").value); // Int
-let salaire = 0;
 
 /***
  * 
@@ -65,11 +31,6 @@ class Casque {
     }
 }
 
-let Multi = new Casque("Multitec", 180, [0.04, 0.06, 0.1], [0, 20, 50]);
-let XSpirit = new Casque("X-Spirit", 350, [0.06], [50]);
-let s20 = new Casque("S-20", 140, [0.02], [0]);
-
-salaire = fix + majoration(50) + Multi.Commission(1) + s20.Commission(1) + XSpirit.Commission(1);
 
 /**
  * 
@@ -87,6 +48,42 @@ function majoration(nbAncien) {
     }
     return total;
 }
+
+
+function calc_sim() {
+    let salaire = 0;
+    let nbAncien = parseInt(window.document.querySelector("#num_ancien").value); // Int
+    let Multi = new Casque("Multitec", 180, [0.04, 0.06, 0.1], [0, 20, 50]);
+    let XSpirit = new Casque("X-Spirit", 350, [0.06], [50]);
+    let s20 = new Casque("S-20", 140, [0.02], [0]);
+    if (window.document.querySelector("#lst_typecasque").value === "" ||
+        window.document.querySelector("#num_ancien").value === "" ||
+        window.document.querySelector("#prix_casque").value === "" ||
+        window.document.querySelector("#com_km").value === "") {
+        alert("Veuillez remplir toute les valeurs"); // On affiche un message
+    }
+    else {
+        if (window.document.querySelector("#lst_typecasque").value == "Multi") {
+            salaire += Multi.Commission(parseInt(window.document.querySelector("#prix_casque").value));
+        }
+        else if (window.document.querySelector("#lst_typecasque").value == "s20") {
+            salaire += s20.Commission(parseInt(window.document.querySelector("#prix_casque").value));
+        }
+        else {
+            salaire += XSpirit.Commission(parseInt(window.document.querySelector("#prix_casque").value));
+        }
+        salaire += majoration(nbAncien) + fix
+
+        window.document.querySelector("#resultat").innerHTML = "La rémunération sera de : " + salaire + " €";
+    }
+}
+
+/**
+ * Attend envoie :
+ */
+window.addEventListener("load", function () {
+    window.document.querySelector("#btn_envoyer").addEventListener("click", calc_sim);
+});
 
 
 
