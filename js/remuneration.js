@@ -1,3 +1,35 @@
+function calc_sim() {
+    if (window.document.querySelector("#lst_typecasque").value === "" ||
+        window.document.querySelector("#num_ancien").value === "" ||
+        window.document.querySelector("#prix_casque").value === "" ||
+        window.document.querySelector("#com_km").value === "") {
+        alert("Veuillez remplir toute les valeur"); // On affiche un message
+    }
+    else {
+        if (window.document.querySelector("#lst_typecasque").value == "Multi") {
+            salaire += Multi.Commission(parseInt(window.document.querySelector("#prix_casque").value));
+        }
+        else if (window.document.querySelector("#lst_typecasque").value == "s20") {
+            salaire += s20.Commission(parseInt(window.document.querySelector("#prix_casque").value));
+        }
+        else {
+            salaire += XSpirit.Commission(parseInt(window.document.querySelector("#prix_casque").value));
+        }
+        salaire += majoration(nbAncien)
+
+        window.document.querySelector("#resultat").innerHTML = "La rémunération sera de : " + salaire + " €";
+    } 
+}
+
+/**
+ * Attend envoie :
+ */
+window.addEventListener("load", function () {
+    window.document.querySelector("#btn_envoyer").addEventListener("click", validEnvoi);
+});
+
+
+
 const fix = 1100; // Rémunération fixé sans majoration d'anciennet
 let nbAncien = parseInt(window.document.querySelector("#num_ancien").value); // Int
 let salaire = 0;
@@ -13,7 +45,7 @@ class Casque {
         this.taux = taux;
         this.qteRq = [...qteRq, 99999999];
     }
-    
+
     /***
      * 
      * @param {Number} qte La quantité de casque vendu
@@ -55,6 +87,8 @@ function majoration(nbAncien) {
     }
     return total;
 }
+
+
 
 
 
