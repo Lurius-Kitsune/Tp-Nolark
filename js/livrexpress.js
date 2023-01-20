@@ -1,3 +1,9 @@
+
+/**
+ * Renvoie la prime obtenue en fonction du nombre d'années d'anciéneté
+ * @param {Integer} years
+ * @returns {Integer}
+ */
 function primeAnnées(years){
     const yrsForPrime = 4, premPrime = 300, upPrime = 30;
     let result = 0;
@@ -18,7 +24,7 @@ function primeAnnées(years){
  */
 function primeDist(dist){
     const plafond = 900, centpKm = 0.1;
-    let i, result = 0;
+    let result = 0;
     result += centpKm*dist;
         if (result >= plafond){
             result = plafond;
