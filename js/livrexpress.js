@@ -31,3 +31,12 @@ function primeDist(dist){
         }
     return result;
 }
+
+function lostPrime(nbAccident, prime){
+    if (nbAccident === 0){
+        return prime;
+    }
+    else{
+        
+    }
+}
