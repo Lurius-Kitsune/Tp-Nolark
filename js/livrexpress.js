@@ -1,5 +1,13 @@
-function primeAnnées(){
-    
+function primeAnnées(years){
+    const yrsForPrime = 4, premPrime = 300, upPrime = 30;
+    let result = 0;
+    if (years >= yrsForPrime){
+        result = premPrime;
+        if (years >= yrsForPrime + 1){
+            result += upPrime * (years-yrsForPrime);
+        }
+    }
+    return result;
 }
 
 /**
