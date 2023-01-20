@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- 
+     Page web créé dans le cadre du cours de web Dev le 01/09/2018
+     Auteur : José GIL
+     Email : jgil83000@gmail.com
+-->
+
+<html lang="fr-FR">
+    <head>
+        <title>Casques Nolark : Sécurité et confort, nos priorités !</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="José GIL">
+        <meta name="description" content="Découvrez des casques moto dépassant même les exigences des tests de sécurité. Tous les casques Nolark au meilleur prix et avec en prime la livraison gratuite !">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../css/styles.css" rel="stylesheet" type="text/css">
+        <link href="../../css/simulateur.css" rel="stylesheet" type="text/css">
+        <script src="../../js/remuneration.js"></script>
+        <link rel="icon" href="../../favicon.ico">
+    </head>
+    <body>
+        <header>
+            <picture>
+                <source media="(max-width:576px)" srcset="../../images/banniere_small.png">
+                <source srcset="../../images/banniere.png">
+                <img src="../../images/banniere.png" alt="Nolark : Protect your minds ! Cette bannière
+                     montre un coucher de soleil avec une femme embrassant un homme réalisant en
+                     stoppie sur sa moto.">
+                <!-- Image basée sur la création originale de ShiftGraphiX sur Pixabay :
+                https://pixabay.com/fr/couple-stoppie-sportive-vélomoteur-3156613/ -->
+            </picture>
+            <nav>
+                <input type="checkbox">
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul>
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="../route.html">Route</a></li>
+                    <li><a href="../cross.html">Cross</a></li>
+                    <li><a href="../piste.html">Piste</a></li>
+                    <li><a href="../enfants.html">Enfants</a></li>
+                    <li><a href="../nous-contacter.html">Nous contacter</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="formulaire">
+            <h1>Simulateur de calcul pour la force de vente :</h1>
+            <form id="form_simulateur" name="form_simulateur">
+                <fieldset id="resultats">
+                    <legend>Vos résultats : </legend>
+                    <p>
+                        <label for="num_ancien">Nombre d'années d'ancienneté :</label>
+                        <input type="number" name="num_ancien" id="num_ancien" min="0" max="50" value="0">
+                    </p>
+                    <p>
+                        <label for="num_s20">Nombre de S 20 vendus :</label>
+                        <input type="number" name="num_s20" id="num_s20" min="0" max="9999" value="0">
+                    </p>
+                    <p>
+                        <label for="num_xs">Nombre de X-Spirit vendus :</label>
+                        <input type="number" name="num_xs" id="num_xs" min="0" max="9999" value="0">
+                    </p>
+                    <p>
+                        <label for="num_multi">Nombre de Multitec vendus :</label>
+                        <input type="number" name="num_multi" id="num_multi" min="0" max="9999" value="0">
+                    </p>
+                    <h2 id="remuneration"></h2>
+                </fieldset>
+                <p id="controles">
+                    <input type="button" name="sub_calculer" id="btn_calculer"
+                           value="Calculer votre rémunération">
+                    <input type="reset" name="rst_annuler" id="btn_annuler" value="Effacer les données">
+                </p>
+            </form>
+        </section>
+        <footer>
+            <p>&copy;2018 Nolark - Créé par <a href="mailto:jose.gil@ac-nice.fr">José GIL</a><p>
+        </footer>
+    </body>
+</html>
