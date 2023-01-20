@@ -1,92 +1,171 @@
-const fix = 1100; // Rémunération fixé sans majoration d'anciennet
-
-/***
- * 
- * @type type Classe
+/**
+ * Fonction qui retourne la prime d'ancienneté
+ * @param {integer} nb
+ * @param {float} fixe
+ * @returns {float}
  */
-class Casque {
-    constructor(nom, prix, taux, qteRq) {
-        this.nom = nom;
-        this.prix = prix;
-        this.taux = taux;
-        this.qteRq = [...qteRq, 99999999];
+function recupPrimeAnciennete(nb, fixe) {
+    const nbAncienMin = 5, txAncienMin = 0.03, nbAncienSup = 10, txAncienSup = 0.06;
+    if (nb >= nbAncienSup) {
+        return (fixe * txAncienSup);
+    } else if (nb >= nbAncienMin) {
+        return (fixe * txAncienMin);
+    } else {
+        return 0.0;
     }
-
-    /***
-     * 
-     * @param {Number} qte La quantité de casque vendu
-     * @returns {Number} Renvoie la comission toucher à la vente total de Casque
-     */
-    Commission(qte) {
-        let total = 0;
-        let i, j;
-        for (i = 1; i !== qte + 1; i++) {
-            for (j = 0; j !== this.taux.length; j++) {
-                if (this.qteRq[j] + 1 <= qte < this.qteRq[j + 1]) {
-                    total += this.prix * this.taux[j];
-                }
-            }
-        }
-        return total;
-    }
-}
-
+} 
+// La position des accolades ci-dessus n'est pas du tout optimale... (mise en page A4)
 
 /**
- * 
- * @param {Number} nbAncien Le nombre d'ancienneté
- * @returns {Number} Renvoie la valeur total 
+ * Fonction qui retourne la commission sur le S20
+ * @param {integer} nb
+ * @returns {float}
  */
-function majoration(nbAncien) {
-    let total = 0;
-    if (nbAncien >= 5) {
-        if (nbAncien >= 5 && nbAncien < 10) {
-            total += fix * 0.03;
-        } else {
-            total += fix * 0.06;
-        }
-    }
-    return total;
+function recupComS20(nb) {
+    const prixS20 = 140.0, txComS20 = 0.02;
+    return (nb * prixS20 * txComS20);
 }
 
-
-function calc_sim() {
-    let salaire = 0;
-    let nbAncien = parseInt(window.document.querySelector("#num_ancien").value); // Int
-    let Multi = new Casque("Multitec", 180, [0.04, 0.06, 0.1], [0, 20, 50]);
-    let XSpirit = new Casque("X-Spirit", 350, [0.06], [50]);
-    let s20 = new Casque("S-20", 140, [0.02], [0]);
-    if (window.document.querySelector("#lst_typecasque").value === "" ||
-        window.document.querySelector("#num_ancien").value === "" ||
-        window.document.querySelector("#prix_casque").value === "" ||
-        window.document.querySelector("#com_km").value === "") {
-        alert("Veuillez remplir toute les valeurs"); // On affiche un message
-    }
-    else {
-        if (window.document.querySelector("#lst_typecasque").value == "Multi") {
-            salaire += Multi.Commission(parseInt(window.document.querySelector("#prix_casque").value));
-        }
-        else if (window.document.querySelector("#lst_typecasque").value == "s20") {
-            salaire += s20.Commission(parseInt(window.document.querySelector("#prix_casque").value));
-        }
-        else {
-            salaire += XSpirit.Commission(parseInt(window.document.querySelector("#prix_casque").value));
-        }
-        salaire += majoration(nbAncien) + fix
-
-        window.document.querySelector("#resultat").innerHTML = "La rémunération sera de : " + salaire + " €";
+/**
+ * Fonction qui retourne la commission sur le X-Spirit
+ * @@param {integer} nb
+ * @returns {float}
+ */
+function recupComXS(nb) {
+    const prixXS = 350.0, nbXSMinCom = 50, txComXS = 0.06;
+    if (nb >= nbXSMinCom) {
+        return ((nb - nbXSMinCom) * prixXS * txComXS);
+    } else {
+        return 0.0;
     }
 }
 
 /**
- * Attend envoie :
+ * Fonction qui retourne la commission sur le Multitec
+ * @param {integer} nb
+ * @returns {float}
  */
+function recupComMulti(nb) {
+    const prixMu = 180.0, nbMultiTranche1 = 20, nbMultiTranche2 = 50;
+    const txMultiTranche1 = 0.04, txMultiTranche2 = 0.06, txMultiTranche3 = 0.1;
+    if (nb <= nbMultiTranche1) {
+        return (nb * prixMu * txMultiTranche1);
+    } else if (nb <= nbMultiTranche2) {
+        return ((nbMultiTranche1 * prixMu * txMultiTranche1)
+                + ((nb - nbMultiTranche1) * prixMu * txMultiTranche2));
+    } else {
+        return ((nbMultiTranche1 * prixMu * txMultiTranche1)
+                + ((nbMultiTranche2 - nbMultiTranche1) * prixMu * txMultiTranche2)
+                + ((nb - nbMultiTranche2) * prixMu * txMultiTranche3));
+    }
+}
+
 window.addEventListener("load", function () {
-    window.document.querySelector("#btn_envoyer").addEventListener("click", calc_sim);
+
+    window.document.querySelector("#btn_calculer").addEventListener("click", function () {
+        // Déclaration des constantes
+        const fixe = 1100.0;
+
+        // Déclaration et affectation des variables
+        let nbAncien = parseInt(window.document.querySelector("#num_ancien").value);
+        let nbS20 = parseInt(window.document.querySelector("#num_s20").value);
+        let nbXS = parseInt(window.document.querySelector("#num_xs").value);
+        let nbMulti = parseInt(window.document.querySelector("#num_multi").value);
+        let remuneration = fixe + recupPrimeAnciennete(nbAncien, fixe)
+                + recupComS20(nbS20) + recupComXS(nbXS)
+                + recupComMulti(nbMulti);
+        // Affichage du résultat
+        window.document.querySelector("#remuneration").innerHTML =
+                "La rémunération sera de : " + remuneration + " €";
+    });
 });
 
 
+window.addEventListener("load", function () {
+    window.document.querySelector("#num_ancien").addEventListener("keyup", calcRemu);
+    window.document.querySelector("#num_s20").addEventListener("keyup", calcRemu);
+    window.document.querySelector("#num_xs").addEventListener("keyup", calcRemu);
+    window.document.querySelector("#num_multi").addEventListener("keyup", calcRemu);
+});
 
+window.addEventListener("load", function () {
+    // Déclaration de l'index de parcours
+    let i;
+    // tabInputs est une collection de <input>
+    let tabInputs = window.document.querySelectorAll("input");
+    // Parcours de tabInputs en s'appuyant sur le nombre de <input>
+    for (i = 0; i < tabInputs.length; i++) {
+        // Ajout d'un Listener sur tous les <input> sur l'évènement onKeyUp
+        tabInputs[i].addEventListener("keyup", calcRemu);
+    }
+});
 
+/**
+ * Fonction principale qui s'occupe de récupérer les valeurs, calculer le montant
+ * de la rémunération et qui s'occupe ensuite de l'afficher
+ * 
+ * @returns {undefined}
+ */
+function calcRemu() {
+    // Déclaration des constantes
+    const fixe = 1100.0;
+    //// Déclaration et affectation des variables
+    let km = recupValeur("#num_km");
+    let nbAncien = parseInt(window.document.querySelector("#num_ancien").value);
+    let nbS20 = parseInt(window.document.querySelector("#num_s20").value);
+    let nbXS = parseInt(window.document.querySelector("#num_xs").value);
+    let nbMulti = parseInt(window.document.querySelector("#num_multi").value);
+    let remuneration = fixe + recupPrimeAnciennete(nbAncien, fixe) + recupComS20(nbS20)
+            + recupComXS(nbXS) + recupComMulti(nbMulti) + recupIndemKm(km);
 
+    // Affichage du résultat
+    window.document.querySelector("#remuneration").innerHTML =
+            "La rémunération sera de : " + remuneration + " €";
+}
 
+/**
+ * Fonction principale qui s'occupe de récupérer les valeurs, calculer le montant
+ * de la rémunération et qui s'occupe ensuite de l'afficher
+ * 
+ * @returns {undefined}
+ */
+function calcRemu() {
+    // Déclaration des constantes
+    const fixe = 1100.0;
+    // Déclaration et affectation des variables
+    let nbAncien = recupValeur("#num_ancien");
+    let nbS20 = recupValeur("#num_s20");
+    let nbXS = recupValeur("#num_xs");
+    let nbMulti = recupValeur("#num_multi");
+    let remuneration = fixe + recupPrimeAnciennete(nbAncien, fixe) + recupComS20(nbS20)
+            + recupComXS(nbXS) + recupComMulti(nbMulti);
+    // Affichage du résultat
+    window.document.querySelector("#remuneration").innerHTML =
+            "La rémunération sera de : " + remuneration + " €";
+}
+
+/**
+ * Fonction qui retourne un entier depuis une valeur prise dans le DOM
+ * 
+ * @param {String} id
+ * @return {integer}
+ */
+function recupValeur(id) {
+    return parseInt(window.document.querySelector(id).value);
+}
+
+/**
+ * Fonction qui retourne l'indemnité kilométrique
+ * @param {type} nb
+ * @returns {float}
+ */
+function recupIndemKm(nb) {
+    const prix = 0.15, plafond = 350;
+    let indem = nb * prix;
+    if (indem > plafond) {
+        return plafond;
+    } else {
+        return indem;
+    }
+}
+    
