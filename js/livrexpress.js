@@ -29,21 +29,7 @@ function primeDist(dist){
 }
 
 function lostPrime(nbAccident, prime){
-    if (nbAccident === 0){
-        return prime;
-    }
-    else if (nbAccident === 1){
-        return prime/2
-    }
-    else if (nbAccident === 2){
-        return prime/3
-    }
-    else if (nbAccident === 4){
-        return prime/4
-    }
-    else{
-        return 0
-    }
+    return prime/1+nbAccident
 }
 
 function calculPrime(){
