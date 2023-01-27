@@ -53,7 +53,7 @@ window.addEventListener("load", function () {
     window.document.querySelector("#btn_calculer").addEventListener("click", function () {
         calculPrime();
     });
-    window.document.querySelector("#accident").addEventListener("click", function () {
+    window.document.querySelector("#accident").addEventListener("change", function () {
     
         window.document.querySelector("#o_accident").innerHTML= `${recupValeur("#accident")}`
     });
