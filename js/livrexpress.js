@@ -8,10 +8,7 @@ function primeAnnées(years){
     const yrsForPrime = 4, premPrime = 300, upPrime = 30;
     let result = 0;
     if (years >= yrsForPrime){
-        result = premPrime;
-        if (years >= yrsForPrime + 1){
-            result += upPrime * (years-yrsForPrime);
-        }
+        result = premPrime + (years - yrsForPrime) * upPrime
     }
     return result;
 }
@@ -24,8 +21,7 @@ function primeAnnées(years){
  */
 function primeDist(dist){
     const plafond = 900, centpKm = 0.01;
-    let result = 0;
-    result += centpKm*dist;
+    let result = centpKm*dist;
         if (result >= plafond){
             result = plafond;
         }
