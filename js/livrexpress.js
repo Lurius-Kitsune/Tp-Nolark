@@ -53,9 +53,10 @@ function lostPrime(nbAccident, prime){
 function calculPrime(){
     let prime = 0;
     let dist = recupValeur("#dist")
-    let yrs = recupValeur("#yrs")
+    let yrs = recupValeur("#num_ancien")
+    let accident = recupValeur("#accident")
     prime += primeDist(dist) + primeAnnées(yrs);
-    prime = lostPrime(prime);
+    prime = lostPrime(accident, prime);
 
     window.document.querySelector("#prime").innerHTML =
     "La prime sera de : " + prime + " €";
@@ -75,8 +76,7 @@ window.addEventListener("load", function () {
 
 window.addEventListener("load", function () {
     window.document.querySelector("#num_ancien").addEventListener("keyup", calculPrime);
-    window.document.querySelector("#num_s20").addEventListener("keyup", calculPrime);
-    window.document.querySelector("#num_xs").addEventListener("keyup", calculPrime);
-    window.document.querySelector("#num_multi").addEventListener("keyup", calculPrime);
+    window.document.querySelector("#dist").addEventListener("keyup", calculPrime);
+    window.document.querySelector("#accident").addEventListener("keyup", calculPrime);
 });
 
