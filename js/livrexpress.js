@@ -68,7 +68,8 @@ function recupValeur(id) {
 window.addEventListener("load", function () {
 
     window.document.querySelector("#btn_calculer").addEventListener("click", function () {
-    calculPrime();
+        calculPrime();
+    });
 });
 
 
