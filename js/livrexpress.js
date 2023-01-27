@@ -4,10 +4,10 @@
  * @param {Integer} years
  * @returns {Integer}
  */
-function primeAnnées(years){
+function primeAnnées(years) {
     const yrsForPrime = 4, premPrime = 300, upPrime = 30;
     let result = 0;
-    if (years >= yrsForPrime){
+    if (years >= yrsForPrime) {
         result = premPrime + (years - yrsForPrime) * upPrime
     }
     return result;
@@ -19,29 +19,36 @@ function primeAnnées(years){
  * @param {Integer} dist
  * @returns {float} La prime obtenue 
  */
-function primeDist(dist){
+function primeDist(dist) {
     const plafond = 900, centpKm = 0.01;
-    let result = centpKm*dist;
-        if (result >= plafond){
-            result = plafond;
-        }
+    let result = centpKm * dist;
+    if (result >= plafond) {
+        result = plafond;
+    }
     return result;
 }
 
-function lostPrime(nbAccident, prime){
-    return prime/1+nbAccident
+function lostPrime(nbAccident, prime) {
+    return prime / 1 + nbAccident
 }
 
-function calculPrime(){
+function calculPrime() {
     let prime = 0;
-    let dist = recupValeur("#dist")
-    let yrs = recupValeur("#num_ancien")
     let accident = recupValeur("#accident")
-    prime += primeDist(dist) + primeAnnées(yrs);
-    prime = lostPrime(accident, prime);
+    if (accident === 4) {
+        window.document.querySelector("#dist").parentElement.remove();;
+        window.document.querySelector("#num_ancien").parentElement.remove();
+    }
+    else {
+        let dist = recupValeur("#dist")
+        let yrs = recupValeur("#num_ancien")
+        prime += primeDist(dist) + primeAnnées(yrs);
+        prime = lostPrime(accident, prime);
 
-    window.document.querySelector("#prime").innerHTML =
-    "La prime sera de : " + prime + " €";
+        window.document.querySelector("#prime").innerHTML =
+            "La prime sera de : " + prime + " €";
+    }
+
 }
 
 function recupValeur(id) {
@@ -54,8 +61,9 @@ window.addEventListener("load", function () {
         calculPrime();
     });
     window.document.querySelector("#accident").addEventListener("change", function () {
-    
-        window.document.querySelector("#o_accident").innerHTML= `${recupValeur("#accident")}`
+
+        window.document.querySelector("#o_accident").innerHTML = `${recupValeur("#accident")}`
+        calculPrime();
     });
 });
 
