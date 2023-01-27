@@ -50,3 +50,18 @@ function lostPrime(nbAccident, prime){
     }
 }
 
+function calculPrime(){
+    let prime = 0;
+    let dist = recupValeur("#dist")
+    let yrs = recupValeur("#yrs")
+    prime += primeDist(dist) + primeAnnées(yrs);
+    prime = lostPrime(prime);
+
+    window.document.querySelector("#prime").innerHTML =
+    "La prime sera de : " + prime + " €";
+}
+
+function recupValeur(id) {
+    return parseInt(window.document.querySelector(id).value);
+}
+
