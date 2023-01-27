@@ -65,3 +65,17 @@ function recupValeur(id) {
     return parseInt(window.document.querySelector(id).value);
 }
 
+window.addEventListener("load", function () {
+
+    window.document.querySelector("#btn_calculer").addEventListener("click", function () {
+    calculPrime();
+});
+
+
+window.addEventListener("load", function () {
+    window.document.querySelector("#num_ancien").addEventListener("keyup", calculPrime);
+    window.document.querySelector("#num_s20").addEventListener("keyup", calculPrime);
+    window.document.querySelector("#num_xs").addEventListener("keyup", calculPrime);
+    window.document.querySelector("#num_multi").addEventListener("keyup", calculPrime);
+});
+
