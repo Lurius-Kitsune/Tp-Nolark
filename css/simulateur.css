@@ -19,7 +19,7 @@ fieldset p {
  text-align: right;
  margin-right: 60px;
 }
-#remuneration {
+#remuneration, #prime{
  color: red;
  text-align: center;
  margin-bottom: 10px;
