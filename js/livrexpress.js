@@ -29,7 +29,7 @@ function primeDist(dist) {
 }
 
 function lostPrime(nbAccident, prime) {
-    return prime / 1 + nbAccident
+    return prime / (1 + nbAccident)
 }
 
 function calculPrime() {
