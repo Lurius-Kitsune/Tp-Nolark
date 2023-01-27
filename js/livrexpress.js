@@ -23,7 +23,7 @@ function primeAnnées(years){
  * @returns {float} La prime obtenue 
  */
 function primeDist(dist){
-    const plafond = 900, centpKm = 0.1;
+    const plafond = 900, centpKm = 0.01;
     let result = 0;
     result += centpKm*dist;
         if (result >= plafond){
