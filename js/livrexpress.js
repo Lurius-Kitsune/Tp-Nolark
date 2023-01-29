@@ -42,8 +42,7 @@ function calculPrime() {
             "Trop d'accident, la prochaine fois ces votre emploie qui feras 0 :/"
     }
     else {
-        document.createElement('p').appendChild().innerHTML = "test"
-        let dist = recupValeur("#dist")
+        dist = recupValeur("#dist")
         let yrs = recupValeur("#num_ancien")
         prime += primeDist(dist) + primeAnnées(yrs);
         prime = lostPrime(accident, prime);
@@ -54,6 +53,22 @@ function calculPrime() {
 
 }
 
+function createInput (type, name, id, min=null, max=null, value=null){
+    let input = document.createElement("input")
+    input.type = type
+    input.name = name
+    input.setAttributeNode(document.createAttribute("id").value = id)
+    if (min !== null){
+        input.min = min
+    }
+    if (max !== null){
+        input.max = max
+    }
+    if (value !== null){
+        input.value = value
+    }
+    return input
+}
 function recupValeur(id) {
     return parseInt(window.document.querySelector(id).value);
 }
