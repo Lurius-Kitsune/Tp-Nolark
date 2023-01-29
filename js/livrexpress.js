@@ -42,6 +42,11 @@ function calculPrime() {
             "Trop d'accident, la prochaine fois ces votre emploie qui feras 0 :/"
     }
     else {
+        let label = document.createElement("label");
+        label.innerText = "Nombre d'années d'ancienneté :"
+        putInHTML("resultats", 
+            label,
+            createElement("number","num_ancien", "num_ancien", 0, 50, 0))
         let dist = recupValeur("#dist")
         let yrs = recupValeur("#num_ancien")
         prime += primeDist(dist) + primeAnnées(yrs);
@@ -56,13 +61,13 @@ function putInHTML(id, label, input){
     let form = document.createElement("p")
     form.appendChild(label)
     form.appendChild(input)
-    document.querySelector(`#${$id}`).appendChild(form)
+    document.querySelector(`#${id}`).appendChild(form)
 }
-function createInput (type, name, id, min=null, max=null, value=null){
+function createElement (type, name, id, min=null, max=null, value=null){
     let input = document.createElement("input")
     input.type = type
     input.name = name
-    input.setAttributeNode(document.createAttribute("id").value = id)
+    input.id = id
     if (min !== null){
         input.min = min
     }
