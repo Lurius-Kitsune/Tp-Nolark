@@ -38,8 +38,11 @@ function calculPrime() {
     if (accident === 4) {
         window.document.querySelector("#dist").parentElement.remove();;
         window.document.querySelector("#num_ancien").parentElement.remove();
+        window.document.querySelector("#prime").innerHTML =
+            "Trop d'accident, la prochaine fois ces votre emploie qui feras 0 :/"
     }
     else {
+        document.createElement('p').appendChild().innerHTML = "test"
         let dist = recupValeur("#dist")
         let yrs = recupValeur("#num_ancien")
         prime += primeDist(dist) + primeAnnées(yrs);
