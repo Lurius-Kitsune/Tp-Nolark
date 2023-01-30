@@ -73,6 +73,17 @@ function putInHTML(id, label, input){
     form.appendChild(input)
     document.querySelector(`#${id}`).insertBefore(form, document.querySelector("#prime"))
 }
+
+/**
+ * Génére une balise HTML de type Input avec les paramétre suivant :
+ * @param {String} type 
+ * @param {String} name 
+ * @param {String} id 
+ * @param {Number} min 
+ * @param {Number} max 
+ * @param {Number} value 
+ * @returns {HTMLInputElement} HTMLInputElement
+ */
 function createInput (type, name, id, min=null, max=null, value=null){
     let input = document.createElement("input")
     input.type = type
@@ -92,6 +103,8 @@ function createInput (type, name, id, min=null, max=null, value=null){
 function recupValeur(id) {
     return parseInt(window.document.querySelector(id).value);
 }
+
+
 
 window.addEventListener("load", function () {
 
