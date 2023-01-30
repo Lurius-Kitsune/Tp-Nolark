@@ -43,10 +43,21 @@ function calculPrime() {
     }
     else {
         let label = document.createElement("label");
-        label.innerText = "Nombre d'années d'ancienneté :"
-        putInHTML("resultats", 
+        if (!document.getElementById('num_ancien')){
+
+            label.innerText = "Nombre d'années d'ancienneté :"
+            putInHTML("resultats", 
             label,
-            createElement("number","num_ancien", "num_ancien", 0, 50, 0))
+            createInput("number","num_ancien", "num_ancien", 0, 50, 0))
+        }
+
+        if (!document.getElementById('dist')){
+
+            label.innerText = "Distance parcourue :"
+            putInHTML("resultats", 
+            label,
+            createInput("number","dist", "dist", 0, 50, 0))
+        }
         let dist = recupValeur("#dist")
         let yrs = recupValeur("#num_ancien")
         prime += primeDist(dist) + primeAnnées(yrs);
@@ -63,7 +74,7 @@ function putInHTML(id, label, input){
     form.appendChild(input)
     document.querySelector(`#${id}`).appendChild(form)
 }
-function createElement (type, name, id, min=null, max=null, value=null){
+function createInput (type, name, id, min=null, max=null, value=null){
     let input = document.createElement("input")
     input.type = type
     input.name = name
