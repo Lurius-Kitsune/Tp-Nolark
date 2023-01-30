@@ -71,7 +71,7 @@ function putInHTML(id, label, input){
     let form = document.createElement("p")
     form.appendChild(label)
     form.appendChild(input)
-    document.querySelector(`#${id}`).appendChild(form)
+    document.querySelector(`#${id}`).insertBefore(form, document.querySelector("#prime"))
 }
 function createInput (type, name, id, min=null, max=null, value=null){
     let input = document.createElement("input")
