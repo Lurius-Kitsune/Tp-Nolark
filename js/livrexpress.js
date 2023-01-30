@@ -42,18 +42,17 @@ function calculPrime() {
             "Trop d'accident, la prochaine fois ces votre emploie qui feras 0 :/"
     }
     else {
-        let label = document.createElement("label");
         if (!document.getElementById('num_ancien')){
-
-            label.innerText = "Nombre d'années d'ancienneté :"
+            let label = document.createElement("label");
+            label.innerText = "Nombre d'années d'ancienneté : "
             putInHTML("resultats", 
             label,
             createInput("number","num_ancien", "num_ancien", 0, 50, 0))
         }
 
         if (!document.getElementById('dist')){
-
-            label.innerText = "Distance parcourue :"
+            label = document.createElement("label");
+            label.innerText = "Distance parcourue : "
             putInHTML("resultats", 
             label,
             createInput("number","dist", "dist", 0, 50, 0))
