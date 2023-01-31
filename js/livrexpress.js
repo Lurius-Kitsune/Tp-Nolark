@@ -67,6 +67,7 @@ function calculPrime() {
     }
 
 }
+
 function putInHTML(id, label, input){
     let form = document.createElement("p")
     form.appendChild(label)
@@ -100,29 +101,34 @@ function createInput (type, name, id, min=null, max=null, value=null){
     }
     return input
 }
+
 function recupValeur(id) {
     return parseInt(window.document.querySelector(id).value);
+    window.document.querySelector("#prime").innerHTML =
+            "La prime sera de : " + prime + " €";
 }
 
+function cleanData(){
 
+}
 
-window.addEventListener("load", function () {
-
-    window.document.querySelector("#btn_calculer").addEventListener("click", function () {
-        calculPrime();
-    });
-    window.document.querySelector("#accident").addEventListener("change", function () {
-
-        window.document.querySelector("#o_accident").innerHTML = `${recupValeur("#accident")}`
+window.addEventListener('load', function () {
+    // tabEvents est une collection d'évenements
+    let tabEvents = ['keyup', 'click'];
+    // tabInputs est une collection de <input>
+    let tabInputs = window.document.querySelectorAll('input[type="number"]');
+    // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
+    for (let i = 0; i < tabInputs.length; i++) {
+        for (let j = 0; j < tabEvents.length; j++) {
+            // Ajout des listeners sur tous les <input> des events listés dans tabEvents
+            tabInputs[i].addEventListener(tabEvents[j], calculPrime);
+        }
+    }
+    // Gestion de l'input de type range (recopie de la valeur dans l'output)
+    window.document.querySelector('#nb_accidents').addEventListener('change', function() {
+        window.document.querySelector('#o_nb_accidents').value = recupValeur('#nb_accidents');
         calculPrime();
     });
 });
 
-
-
-window.addEventListener("load", function () {
-    window.document.querySelector("#num_ancien").addEventListener("keyup", calculPrime);
-    window.document.querySelector("#dist").addEventListener("keyup", calculPrime);
-    window.document.querySelector("#accident").addEventListener("keyup", calculPrime);
-});
 
