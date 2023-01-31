@@ -36,14 +36,21 @@ function calculPrime() {
     let prime = 0;
     let accident = recupValeur("#accident")
     if (accident === 4) {
-        window.document.querySelector("#dist").parentElement.remove();;
+        window.document.querySelector("#dist").parentElement.remove();
         window.document.querySelector("#num_ancien").parentElement.remove();
         window.document.querySelector("#prime").innerHTML =
             "Trop d'accident, la prochaine fois ces votre emploie qui feras 0 :/"
     }
     else {
+        if (!window.document.querySelector('#prime')){
+            elH2 = document.createElement("h2");
+            elH2.id = 'prime';
+            document.querySelector(`#resultats`).appendChild(elH2);
+        }
+
         let dist = recupValeur("#dist")
         let yrs = recupValeur("#num_ancien")
+
         if (yrs === null) {
             let label = document.createElement("label");
             label.innerText = "Nombre d'années d'ancienneté : "
@@ -61,7 +68,6 @@ function calculPrime() {
         }
         prime += primeDist(dist) + primeAnnées(yrs);
         prime = lostPrime(accident, prime);
-
         window.document.querySelector("#prime").innerHTML =
             "La prime sera de : " + prime + " €";
     }
@@ -73,6 +79,12 @@ function putInHTML(id, label, input) {
     form.appendChild(label)
     form.appendChild(input)
     document.querySelector(`#${id}`).insertBefore(form, document.querySelector("#prime"))
+    let tabEvents = ['keyup', 'click'];
+    // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
+        for (let j = 0; j < tabEvents.length; j++) {
+            // Ajout des listeners sur tous les <input> des events listés dans tabEvents
+            input.addEventListener(tabEvents[j], calculPrime);
+        }
 }
 
 /**
@@ -102,6 +114,7 @@ function createInput(type, name, id, min = null, max = null, value = null) {
     return input
 }
 
+
 function recupValeur(id) {
     try {
         valeur = parseInt(window.document.querySelector(id).value);
@@ -119,7 +132,26 @@ function recupValeur(id) {
 }
 
 function cleanData() {
+    window.document.querySelector("#prime").remove();
+    
+    let dist = recupValeur("#dist")
+    let yrs = recupValeur("#num_ancien")
 
+    if (yrs === null) {
+        let label = document.createElement("label");
+        label.innerText = "Nombre d'années d'ancienneté : "
+        putInHTML("resultats",
+            label,
+            yrs = createInput("number", "num_ancien", "num_ancien", 0, 50, 0))
+    }
+
+    if (dist === null) {
+        label = document.createElement("label");
+        label.innerText = "Distance parcourue : "
+        putInHTML("resultats",
+            label,
+            dist = createInput("number", "dist", "dist", 0, 50, 0))
+    }
 }
 
 window.addEventListener('load', function () {
@@ -134,6 +166,7 @@ window.addEventListener('load', function () {
             tabInputs[i].addEventListener(tabEvents[j], calculPrime);
         }
     }
+    window.document.querySelector("#btn_annuler").addEventListener("click" , cleanData)
     // Gestion de l'input de type range (recopie de la valeur dans l'output)
     window.document.querySelector('#accident').addEventListener('change', function () {
         window.document.querySelector('#o_accident').value = recupValeur('#accident');
