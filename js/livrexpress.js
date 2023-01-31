@@ -59,7 +59,7 @@ function calculPrime() {
             label,
             dist = createInput("number","dist", "dist", 0, 50, 0))
         }
-        prime += primeDist(dist.value) + primeAnnées(yrs);
+        prime += primeDist(dist) + primeAnnées(yrs);
         prime = lostPrime(accident, prime);
 
         window.document.querySelector("#prime").innerHTML =
