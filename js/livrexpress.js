@@ -44,20 +44,20 @@ function calculPrime() {
     else {
         let dist = recupValeur("#dist")
         let yrs = recupValeur("#num_ancien")
-        if (yrs === null){
+        if (yrs === null) {
             let label = document.createElement("label");
             label.innerText = "Nombre d'années d'ancienneté : "
-            putInHTML("resultats", 
-            label,
-            yrs = createInput("number","num_ancien", "num_ancien", 0, 50, 0))
+            putInHTML("resultats",
+                label,
+                yrs = createInput("number", "num_ancien", "num_ancien", 0, 50, 0))
         }
 
-        if (dist === null){
+        if (dist === null) {
             label = document.createElement("label");
             label.innerText = "Distance parcourue : "
-            putInHTML("resultats", 
-            label,
-            dist = createInput("number","dist", "dist", 0, 50, 0))
+            putInHTML("resultats",
+                label,
+                dist = createInput("number", "dist", "dist", 0, 50, 0))
         }
         prime += primeDist(dist) + primeAnnées(yrs);
         prime = lostPrime(accident, prime);
@@ -68,7 +68,7 @@ function calculPrime() {
 
 }
 
-function putInHTML(id, label, input){
+function putInHTML(id, label, input) {
     let form = document.createElement("p")
     form.appendChild(label)
     form.appendChild(input)
@@ -85,33 +85,40 @@ function putInHTML(id, label, input){
  * @param {Number} value 
  * @returns {HTMLInputElement} HTMLInputElement
  */
-function createInput (type, name, id, min=null, max=null, value=null){
+function createInput(type, name, id, min = null, max = null, value = null) {
     let input = document.createElement("input")
     input.type = type
     input.name = name
     input.id = id
-    if (min !== null){
+    if (min !== null) {
         input.min = min
     }
-    if (max !== null){
+    if (max !== null) {
         input.max = max
     }
-    if (value !== null){
+    if (value !== null) {
         input.value = value
     }
     return input
 }
 
 function recupValeur(id) {
-    try{
-        return parseInt(window.document.querySelector(id).value);
+    try {
+        valeur = parseInt(window.document.querySelector(id).value);
+        if (isNaN(valeur)) {
+            window.document.querySelector(id).value = 0;
+            return 0;
+        }
+        else {
+            return valeur
+        }
     }
-    catch{
+    catch {
         return null
     }
 }
 
-function cleanData(){
+function cleanData() {
 
 }
 
@@ -128,7 +135,7 @@ window.addEventListener('load', function () {
         }
     }
     // Gestion de l'input de type range (recopie de la valeur dans l'output)
-    window.document.querySelector('#accident').addEventListener('change', function() {
+    window.document.querySelector('#accident').addEventListener('change', function () {
         window.document.querySelector('#o_accident').value = recupValeur('#accident');
         calculPrime();
     });
