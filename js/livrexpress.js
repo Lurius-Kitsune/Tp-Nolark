@@ -42,24 +42,24 @@ function calculPrime() {
             "Trop d'accident, la prochaine fois ces votre emploie qui feras 0 :/"
     }
     else {
-        if (!document.getElementById('num_ancien')){
+        let dist = recupValeur("#dist")
+        let yrs = recupValeur("#num_ancien")
+        if (yrs === null){
             let label = document.createElement("label");
             label.innerText = "Nombre d'années d'ancienneté : "
             putInHTML("resultats", 
             label,
-            createInput("number","num_ancien", "num_ancien", 0, 50, 0))
+            yrs = createInput("number","num_ancien", "num_ancien", 0, 50, 0))
         }
 
-        if (!document.getElementById('dist')){
+        if (dist === null){
             label = document.createElement("label");
             label.innerText = "Distance parcourue : "
             putInHTML("resultats", 
             label,
-            createInput("number","dist", "dist", 0, 50, 0))
+            dist = createInput("number","dist", "dist", 0, 50, 0))
         }
-        let dist = recupValeur("#dist")
-        let yrs = recupValeur("#num_ancien")
-        prime += primeDist(dist) + primeAnnées(yrs);
+        prime += primeDist(dist.value) + primeAnnées(yrs);
         prime = lostPrime(accident, prime);
 
         window.document.querySelector("#prime").innerHTML =
@@ -103,9 +103,12 @@ function createInput (type, name, id, min=null, max=null, value=null){
 }
 
 function recupValeur(id) {
-    return parseInt(window.document.querySelector(id).value);
-    window.document.querySelector("#prime").innerHTML =
-            "La prime sera de : " + prime + " €";
+    try{
+        return parseInt(window.document.querySelector(id).value);
+    }
+    catch{
+        return null
+    }
 }
 
 function cleanData(){
@@ -125,8 +128,8 @@ window.addEventListener('load', function () {
         }
     }
     // Gestion de l'input de type range (recopie de la valeur dans l'output)
-    window.document.querySelector('#nb_accidents').addEventListener('change', function() {
-        window.document.querySelector('#o_nb_accidents').value = recupValeur('#nb_accidents');
+    window.document.querySelector('#accident').addEventListener('change', function() {
+        window.document.querySelector('#o_accident').value = recupValeur('#accident');
         calculPrime();
     });
 });
