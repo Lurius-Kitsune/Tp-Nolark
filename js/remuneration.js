@@ -150,7 +150,7 @@ function calcRemu() {
  * @param {String} id
  * @return {integer}
  */
-function recupValeur(id) {
+export function recupValeur(id) {
     return parseInt(window.document.querySelector(id).value);
 }
 

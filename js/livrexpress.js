@@ -1,3 +1,4 @@
+import {recupValeur} from './remuneration.js';
 
 /**
  * Renvoie la prime obtenue en fonction du nombre d'années d'anciéneté
@@ -114,22 +115,6 @@ function createInput(type, name, id, min = null, max = null, value = null) {
     return input
 }
 
-
-function recupValeur(id) {
-    try {
-        valeur = parseInt(window.document.querySelector(id).value);
-        if (isNaN(valeur)) {
-            window.document.querySelector(id).value = 0;
-            return 0;
-        }
-        else {
-            return valeur
-        }
-    }
-    catch {
-        return null
-    }
-}
 
 function cleanData() {
     window.document.querySelector("#prime").remove();
