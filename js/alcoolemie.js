@@ -25,5 +25,5 @@ function getCoefDiffusion(sexe){
 }
 
 function getAlcoolemie(sexe, poids, nbVerres){
-    return getAlcoolPur(nbVerres) / (poids * getCoefDiffusion(sexe));
+    return (getAlcoolPur(nbVerres) / (poids * getCoefDiffusion(sexe))).toFixed(2);
 }
