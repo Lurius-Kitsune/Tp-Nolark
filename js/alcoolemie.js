@@ -1,3 +1,11 @@
+/***
+ * Fonction qui retourne l'alcool pur ingéré en fonction du nombre
+ * de verre
+ * 
+ * @param {int} nbVerres
+ * @returns {int}
+ */
 function getAlcoolPur(nbVerres) {
- return nbVerres * 10;
+    const uniteAlcool = 10;
+    return nbVerres * uniteAlcool;
 }
