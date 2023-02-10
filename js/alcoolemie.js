@@ -88,3 +88,7 @@ function getInt(id) {
         return valeur;
     }
 }
+
+function getString(id){
+    return window.document.querySelector(id).value;
+}
