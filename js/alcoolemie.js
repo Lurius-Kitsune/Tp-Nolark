@@ -71,11 +71,20 @@ function getSanction(alcoolemie) {
     }
 }
 
+/***
+ * Fonction qui retourne une valeur entière récupérée via
+ * widow.document.querySelector(id)
+ * 
+ * @param {string} id
+ * @returns {integer}4
+ */
 function getInt(id) {
-    if (isNaN(parseInt(window.document.querySelector(id).value))) {
+    let valeur = parseInt(window.document.querySelector(id).value)
+    if (isNaN(valeur)) {
+        window.document.querySelector(id).value = 0;
         return 0;
     }
     else {
-        return parseInt(window.document.querySelector(id).value);
+        return valeur;
     }
 }
