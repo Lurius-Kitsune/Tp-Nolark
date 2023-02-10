@@ -104,6 +104,14 @@ function simulAlcoolemie() {
     let poid = getInt("#num_poids");
     let sexe = getString('#sexe input[type="radio"]:checked');
     let alcoolemie = getAlcoolemie(sexe, poid, nbVerre);
+    
+    createElement("h3", "rstAlcoolemie", "#resultats");
+    createElement("h3", "amende", "#resultats");
+    createElement("h3", "sanction", "#resultats");
+    $("#rstAlcoolemie").innerHTML = "Alcoolémie : " + alcoolemie + "g/l de sang";
+    if (alcoolemie )
+    $("#amende").innerHTML = "Amende : " + getAmende(alcoolemie);
+    $("#sanction").innerHTML = "Sanction : " + getSanction(alcoolemie);
 }
 
 
@@ -111,7 +119,7 @@ window.addEventListener('load', function () {
     // tabEvents est une collection d'évenements
     let tabEvents = ['keyup', 'click'];
     // tabInputs est une collection de <input>
-    let tabInputs = window.document.querySelectorAll('input[type="number, ratio"]');
+    let tabInputs = window.document.querySelectorAll('input[type="number"], input[type="radio"]');
     // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
     for (let i = 0; i < tabInputs.length; i++) {
         for (let j = 0; j < tabEvents.length; j++) {
@@ -121,12 +129,21 @@ window.addEventListener('load', function () {
     }
 });
 
+/***
+ * FOnction agissant comme le $ de JQUERY
+ * @param {string} id
+ * @returns {DOM}
+ */
+function $(id){
+    return window.document.querySelector(id);
+}
+
 function createElement(type, id, dest) {
     // On vérifie si l'id est déja utilisé
     if (!window.document.querySelector(id)) {
         el = document.createElement(type);
-        elH2.id = id;
+        el.id = id;
         // ajout de l'élément dans le HTML
-        document.querySelector(dest).appendChild(elH2);
+        document.querySelector(dest).appendChild(el);
     }
 }
