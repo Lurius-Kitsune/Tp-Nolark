@@ -57,8 +57,15 @@ function getAmende(alcoolemie){
     }
 }
 
+/***
+ * Fonction qui retourne la sanction encourue en fonction de l'alcoolémie
+ * 
+ * @param {int} alcoolemie
+ * @returns {String}
+ */
 function getSanction (alcoolemie){
-    if (alcoolemie < 0.8){
+    const seuil = 0.8;
+    if (alcoolemie < seuil){
         return '6 points + suspension 3 ans'; 
     }
     else {
