@@ -79,7 +79,7 @@ function getSanction(alcoolemie) {
  * @returns {integer}4
  */
 function getInt(id) {
-    let valeur = parseInt(window.document.querySelector(id).value)
+    let valeur = parseInt(getString(id));
     if (isNaN(valeur)) {
         window.document.querySelector(id).value = 0;
         return 0;
