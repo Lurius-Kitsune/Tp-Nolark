@@ -72,5 +72,10 @@ function getSanction(alcoolemie) {
 }
 
 function getInt(id) {
-    return parseInt(window.document.querySelector(id).value);
+    if (isNaN(parseInt(window.document.querySelector(id).value))) {
+        return 0;
+    }
+    else {
+        return parseInt(window.document.querySelector(id).value);
+    }
 }
