@@ -56,3 +56,12 @@ function getAmende(alcoolemie){
         return '4500 €';
     }
 }
+
+function getSanction (alcoolemie){
+    if (alcoolemie < 0.8){
+        return '6 points + suspension 3 ans'; 
+    }
+    else {
+        return '6 points + 2 ans de prison + suspension 3 ans + stage de sensibilisation';
+    }
+}
