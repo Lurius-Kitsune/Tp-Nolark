@@ -83,8 +83,7 @@ function getInt(id) {
     if (isNaN(valeur)) {
         window.document.querySelector(id).value = 0;
         return 0;
-    }
-    else {
+    } else {
         return valeur;
     }
 }
@@ -95,12 +94,12 @@ function getInt(id) {
  * @param {string} id
  * @returns {string}
  */
-function getString(id){
+function getString(id) {
     return window.document.querySelector(id).value;
 }
 
 
-function simulAlcoolemie(){
+function simulAlcoolemie() {
     let nbVerre = getInt("#num_verre");
     let poid = getInt("#num_poids");
     let sexe = getString('#sexe input[type="radio"]:checked');
@@ -121,3 +120,13 @@ window.addEventListener('load', function () {
         }
     }
 });
+
+function createElement(type, id, dest) {
+    // On vérifie si l'id est déja utilisé
+    if (!window.document.querySelector(id)) {
+        el = document.createElement(type);
+        elH2.id = id;
+        // ajout de l'élément dans le HTML
+        document.querySelector(dest).appendChild(elH2);
+    }
+}
