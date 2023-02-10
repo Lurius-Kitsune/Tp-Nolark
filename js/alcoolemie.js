@@ -98,3 +98,26 @@ function getInt(id) {
 function getString(id){
     return window.document.querySelector(id).value;
 }
+
+
+function simulAlcoolemie(){
+    let nbVerre = getInt("#num_verre");
+    let poid = getInt("#num_poids");
+    let sexe = getString('#sexe input[type="radio"]:checked');
+    let alcoolemie = getAlcoolemie(sexe, poid, nbVerre);
+}
+
+
+window.addEventListener('load', function () {
+    // tabEvents est une collection d'évenements
+    let tabEvents = ['keyup', 'click'];
+    // tabInputs est une collection de <input>
+    let tabInputs = window.document.querySelectorAll('input[type="number, ratio"]');
+    // Parcours de tabInputs en s'appuyant sur le nombre de <input> et sur tabEvents
+    for (let i = 0; i < tabInputs.length; i++) {
+        for (let j = 0; j < tabEvents.length; j++) {
+            // Ajout des listeners sur tous les <input> des events listés dans tabEvents
+            tabInputs[i].addEventListener(tabEvents[j], simulAlcoolemie);
+        }
+    }
+});
