@@ -132,7 +132,7 @@ function cleanData() {
 
     if (dist === null) {
         label = document.createElement("label");
-        label.innerText = "Distance parcourue : "
+        label.innerText = "Distance parcourue : ";
         putInHTML("resultats",
             label,
             dist = createInput("number", "dist", "dist", 0, 50, 0))
