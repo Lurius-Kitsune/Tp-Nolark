@@ -44,30 +44,21 @@
             </nav>
         </header>
         <section id="formulaire">
-            <h1>Simulateur de calcul pour la prime sécurité :</h1>
+            <h1>Simulateur d'alcoolemie :</h1>
             <form id="form_simulateur" name="form_simulateur">
-                <fieldset id="resultats">
-                    <legend>Vos résultats : </legend>
-                    <p>
-                        <label for="dist">Nombre d'accident :</label>
-                        <input type="range" name="accident" id="accident" min="0" max="4" value="0">
-                        <output for="accident" id="o_accident">0</output>
-                    </p>
-                    <p>
-                        <label for="num_ancien">Nombre d'années d'ancienneté :</label>
-                        <input type="number" name="num_ancien" id="num_ancien" min="0" max="50" value="0">
-                    </p>
-                    <p>
-                        <label for="dist">Distance Parcourue :</label>
-                        <input type="number" name="dist" id="dist" min="0" max="9999" value="0">km
-                    </p>
-                    <h2 id="prime"></h2>
+                Poids : <input type="number" id="num_poids" value="0">
+                <fieldset id="sexe">
+                    <legend>Sexe : </legend>
+                    <input type="radio" name="rd_sexe" id="rd_sexehomme" value="homme">Homme
+                    <input type="radio" name="rd_sexe" id="rd_sexefemme" value="homme">Femme
                 </fieldset>
+                Nombre de verres : <input type="number" id="num_verre" value="1">
                 <p id="controles">
-                    <input type="button" name="sub_calculer" id="btn_calculer"
-                           value="Calculer votre rémunération">
                     <input type="reset" name="rst_annuler" id="btn_annuler" value="Effacer les données">
                 </p>
+                <h3></h3>
+                <h3></h3>
+                <h3></h3>
             </form>
         </section>
         <footer>
