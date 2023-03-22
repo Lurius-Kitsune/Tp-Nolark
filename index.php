@@ -40,9 +40,9 @@
                     $noms = array("Route", "Cross", "Piste", "Enfants", "Nous contacter");
                     $nbLiens = count($pages);
                     for ($i = 0; $i < $nbLiens; $i++) {
-                        ?>
-                        <li><a href="pages/<?php echo $pages[$i]; ?>"><?php echo $noms[$i]; ?></a></li>
-                    <?php } ?>
+                        echo '<li><a href="pages/', $pages[$i], '">', $noms[$i], '</a></li>';
+                    }
+                    ?>
 
                 </ul>
             </nav>
