@@ -1,9 +1,11 @@
 <?php
 
-$pages = array("route.html", "cross.html", "piste.html", "enfants.html",
-    "nous-contacter.html");
-$noms = array("Route", "Cross", "Piste", "Enfants", "Nous contacter");
-$nbLiens = count($pages);
-for ($i = 0; $i < $nbLiens; $i++) {
-    echo '<li><a href="pages/', $pages[$i], '">', $noms[$i], '</a></li>';
+$pages = array("index.html" => "Accueil"
+    , "route.html" => "Route"
+    , "cross.html" => "Cross"
+    , "piste.html" => "Piste"
+    , "enfants.html" => "Enfants"
+    , "nous-contacter.html" => "Nous contacter");
+foreach ($pages as $lienPage => $nomPage) {
+    echo '<li><a href="pages/', $lienPage, '">', $nomPage, '</a></li>';
 }
