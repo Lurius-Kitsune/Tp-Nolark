@@ -34,11 +34,16 @@
                 <span></span>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="pages/route.html">Route</a></li>
-                    <li><a href="pages/cross.html">Cross</a></li>
-                    <li><a href="pages/piste.html">Piste</a></li>
-                    <li><a href="pages/enfants.html">Enfants</a></li>
-                    <li><a href="pages/nous-contacter.html">Nous contacter</a></li>
+                    <?php
+                    $pages = array("route.html", "cross.html", "piste.html", "enfants.html",
+                        "nous-contacter.html");
+                    $noms = array("Route", "Cross", "Piste", "Enfants", "Nous contacter");
+                    $nbLiens = count($pages);
+                    for ($i = 0; $i < $nbLiens; $i++) {
+                        ?>
+                        <li><a href="pages/<?php echo $pages[$i]; ?>"><?php echo $noms[$i]; ?></a></li>
+                    <?php } ?>
+
                 </ul>
             </nav>
         </header>
