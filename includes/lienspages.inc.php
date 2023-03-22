@@ -1,6 +1,6 @@
 <?php
 
-$pages = array("index.html" => "Accueil"
+$pages = array("index.php" => "Accueil"
     , "route.html" => "Route"
     , "cross.html" => "Cross"
     , "piste.html" => "Piste"
