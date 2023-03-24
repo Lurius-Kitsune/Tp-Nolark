@@ -16,9 +16,9 @@
         <link rel="icon" href="favicon.ico">
     </head>
     <body>
-            <?php
-            include 'includes/header.html.inc.php';
-            ?>
+        <?php
+            include('./includes/header.html.inc.php');
+        ?>
         <section id="principal">
             <article>
                 <img src="images/post-it.png" alt="Post-It : Penser à rentrer en vie">
@@ -63,7 +63,7 @@
             <article id="droite"><a href="pages/piste.html">Piste</a></article>
         </section>
         <?php
-            include_once 'includes/footer.inc.php';
+            include('./includes/footer.inc.php');
         ?>
     </body>
 </html>

@@ -76,7 +76,7 @@
     margin-right: 10px;
 }
 
-input:valid, form:not(input[type="submit"]) {
+input:valid, input:not(input[type="submit"]) {
     color: green;
 }
 input:invalid {
@@ -94,20 +94,29 @@ input[type="email"]:valid ~ .input-validation::before {
     color: green;
 }
 
-@media screen and (max-width: 576px){
-    #carto{
-        width: 100%;
-    }
-    #carto img:nth-child(2){
-        width: 100%
+@media screen and (max-width:576px) {
+    #motif {
+        margin-top: 20px;
     }
 }
-@media screen and (min-width:576px) and (max-width:768px){
-    #carto img{
-        width: 49%;
-        margin-right: 1%;
+
+@media screen and (min-width:576px) and (max-width:768px) {
+    #contact {
+        display: flex;
+        flex-direction: column;
     }
-    #carto img:nth-child(2){
-        width: 100%
+    #contact h1 {
+        width: 100%;
+    }
+    #coordo {
+        width: 100%;
+    }
+    #motif {
+        width: fit-content;
+    }
+    #controles {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }

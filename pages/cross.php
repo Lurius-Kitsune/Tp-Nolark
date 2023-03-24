@@ -18,7 +18,7 @@
     </head>
     <body>
         <?php
-        include '../includes/header.html.inc.php';
+            include('../includes/header.html.inc.php');
         ?>
         <section id="casques">
             <!-- - - - - - - - - - - - - - LIGNE N°1 - - - - - - - - - - - - -->
@@ -97,7 +97,7 @@
             </article>
         </section>
         <?php
-        include_once '../includes/footer.inc.php';
+            include('../includes/footer.inc.php');
         ?>
     </body>
 </html>

@@ -9,7 +9,7 @@
 }
 
 /* Définition de la police "Montserrat" */
-@font-face{
+@font-face{ 
     font-family: "Montserrat";
     src: url('polices/Montserrat-Regular.ttf') format("truetype");
 }
@@ -27,15 +27,20 @@ header {
     display: flex; /* Ce conteneur est "flexible" */
     flex-direction: column; /* Les éléments sont empilés */
 }
+
+picture {
+    display: flex;
+}
+
 nav input {
     display: none;
 }
+
 nav ul {
     display: flex; /* Ce conteneur est "flexible" */
     flex-direction: row; /* Les éléments sont mis côte à côte */
     justify-content: space-between; /* Les éléments sont répartis équitablement */
     background-color: black; /* Couleur du fond */
-    margin-top: -4px
 }
 nav ul li {
     display: flex; /* Ce conteneur est "flexible" */
@@ -107,7 +112,7 @@ h1 {
 }
 
 #thematique h1 {
-    width: 100%; /* Le titre occupe toute la largeur */
+    width: 100%; /* Le titre occupe toute la largeur */ 
     margin-bottom: 10px; /* Marge basse */
 }
 
@@ -120,7 +125,7 @@ h1 {
 }
 
 /* Définition de la police "Nordic" */
-@font-face{
+@font-face{ 
     font-family: "Nordic";
     src: url('polices/Nordic.ttf') format("truetype");
 }
@@ -157,7 +162,7 @@ footer {
     position: fixed; /* Le conteneur est fixé en fonction de ses coordonnées (à 0px du bas) */
     bottom: 0px; /* Bas */
     height: 35px; /* Hauteur */
-    width: 100%; /* Le pied de page occupe toute la largeur */
+    width: 100%; /* Le pied de page occupe toute la largeur */ 
     background-color:#2d2d2d; /* Couleur de fond */
     color: #bbb; /* Couleur du texte */
     text-align:center; /* Texte centré */
@@ -171,15 +176,15 @@ footer a{
     color: inherit; /* Couleur du lien identique à celle du conteneur */
 }
 
-@media screen and (max-width:576px){ /*Version mobile */
+/* Smartphone */
+@media screen and (max-width:768px) {
     body {
         font-size: large;
     }
 
     header, section {
-        width: auto;
+        width: auto; /* Suppression de la largeur définie */
     }
-
 
     header img {
         width: 100%; /* Bannière sur toute la largeur */
@@ -187,17 +192,18 @@ footer a{
         padding-bottom: 15px; /* du bas de l'image sur 15 pixels */
     }
 
-    /*ICONE BURGER*/
     nav {
+        /*display: block;*/
         position: relative;
         top: 7px;
         left: 7px;
-        z-index: 1; /* La barre de navigation devra être au premier plan */
+        z-index: 1;
     }
+
     nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        display: flex; /* Ce conteneur est "flexible" */
+        flex-direction: column; /* Les éléments sont mis côte à côte */
+        align-items: flex-start; /* Alignement sur la gauche */
         position: absolute;
         margin: -39px 0 0 -60px;
         padding: 50px 10px 10px 60px;
@@ -205,7 +211,6 @@ footer a{
         list-style-type: none;
         transform: translate(-100%, 0);
         transition: transform 0.5s ease;
-
     }
 
     nav ul li {
@@ -214,13 +219,15 @@ footer a{
         width: 100%;
     }
 
+
     nav input {
-        display: block;
+        display: block; /* Affichage de l'input pour pouvoir cliquez dessus */
         position: absolute;
-        opacity: 0;
-        z-index: 2;
+        opacity: 0; /* input transparent */
+        z-index: 2; /* On le place au-dessus du bouton de menu (hamburger) */
     }
 
+    /* Création artificielle de l'icone de menu (hamburger) */
     nav span {
         display: block;
         width: 30px;
@@ -230,143 +237,68 @@ footer a{
         background: black;
         border-radius: 3px;
         z-index: 1; /* En dessous de l'input défini avant */
-        transition: transform 0.5s ease, background 0.5s ease;
+        /*transform-origin: 4px 0px; /* Modification du centre pour rotation */
+        transition: transform 0.5s ease, background 0.5s ease, opacity 0.55s ease;
     }
 
+    /* Toutes les barres en blanc */
     nav input:checked ~ span {
         background: white;
     }
 
+    /* On fait pivoter la première de 45° (sens horaire) */
     nav input:checked ~ span:nth-child(2) {
         transform: rotate(45deg) translate(7px, 5px);
     }
+
+    /* On fait pivoter la dernière de 45° (sens anti-horaire) */
     nav input:checked ~ span:nth-child(4) {
         transform: rotate(-45deg) translate(10px, -6px);
     }
 
+    /* On cache la barre du milieu */
     nav input:checked ~ span:nth-child(3) {
-        opacity: 0;
+        opacity: 0; 
     }
 
+    /* On annule la translation vers la gauche qui a caché le menu */
     nav input:checked ~ ul {
         transform: none;
     }
 
-    /*Article*/
-    #principal aside {
+    #principal {
+        flex-direction: column;
+        margin: 0 10px;
+    }
+
+    #principal article img {
+        float: left;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+
+    #principal aside {display: none;}
+
+    h1 {
+        font-size: x-large;
+    }
+
+    #thematique {   
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    #gauche, #milieu, #droite {
+        background-size: contain; 
+    }
+
+    footer {
         display: none;
     }
-    /*Colonne casque*/
-    #thematique {
-        display: grid;
-    }
-
-    #thematique h1{
-        font-size: x-large;
-    }
-    #thematique a{
-        font-size: x-large;
-    }
-
 }
 
-@media screen and (min-width:576px) and (max-width:768px){
-    header, section {
-        width: auto;
-    }
-
-    header, section {
-        width: auto;
-    }
-
-
-    header img {
-        width: 100%; /* Bannière sur toute la largeur */
-        background-color: black; /* Extension artificielle noire */
-        padding-bottom: 15px; /* du bas de l'image sur 15 pixels */
-    }
-
-    /*ICONE BURGER*/
-    nav {
-        position: relative;
-        top: 7px;
-        left: 7px;
-        z-index: 1; /* La barre de navigation devra être au premier plan */
-    }
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        margin: -39px 0 0 -60px;
-        padding: 50px 10px 10px 60px;
-        background: black;
-        list-style-type: none;
-        transform: translate(-100%, 0);
-        transition: transform 0.5s ease;
-
-    }
-
-    nav ul li {
-        display: list-item;
-        padding: 10px 0;
-        width: 100%;
-    }
-
-    nav input {
-        display: block;
-        position: absolute;
-        opacity: 0;
-        z-index: 2;
-    }
-
-    nav span {
-        display: block;
-        width: 30px;
-        height: 5px;
-        margin-bottom: 5px;
-        position: relative;
-        background: black;
-        border-radius: 3px;
-        z-index: 1; /* En dessous de l'input défini avant */
-        transition: transform 0.5s ease, background 0.5s ease;
-    }
-
-    nav input:checked ~ span {
-        background: white;
-    }
-
-    nav input:checked ~ span:nth-child(2) {
-        transform: rotate(45deg) translate(7px, 5px);
-    }
-    nav input:checked ~ span:nth-child(4) {
-        transform: rotate(-45deg) translate(10px, -6px);
-    }
-
-    nav input:checked ~ span:nth-child(3) {
-        opacity: 0;
-    }
-
-    nav input:checked ~ ul {
-        transform: none;
-    }
-
-    /*Article*/
-    #principal aside {
-        display: none;
-    }
-    /*Colonne casque*/
+@media screen and (min-width:576px) and (max-width:768px) {
     #thematique {
-        flex-direction: row; /* Sur tablette, les casques de l'accueil sont côte à côte */
-        width: 100%;
+        flex-direction: row; /* Sur tablette, on met les casques de la page d'accueil côte à côte */
     }
-
-    #thematique h1{
-        font-size: x-large;
-    }
-    #thematique a{
-        font-size: x-large;
-    }
-
-
 }

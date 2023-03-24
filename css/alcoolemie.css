@@ -1,0 +1,19 @@
+fieldset {
+    width: 75%;
+}
+fieldset p {
+    text-align: center;
+    margin-right: 0;
+}
+#sexe {
+    margin: auto;
+    width: fit-content;
+}
+#sexe p {
+    text-align: left;
+    margin: 0 10px;
+}
+h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}

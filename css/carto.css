@@ -16,3 +16,15 @@
 #carto img:last-child {
     margin-top: 10px;
 }
+
+@media screen and (max-width:768px) {
+    #carto h1 {
+        text-align: center;
+    }
+    #carto img:nth-child(2) {
+        display: none;
+    }
+    #carto img:nth-child(3), #carto img:nth-child(4) {
+        width: 100%;
+    }
+}

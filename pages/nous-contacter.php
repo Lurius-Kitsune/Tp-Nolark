@@ -15,44 +15,22 @@
         <link href="../css/styles.css" rel="stylesheet" type="text/css">
         <link href="../css/carto.css" rel="stylesheet" type="text/css">
         <link href="../css/contact.css" rel="stylesheet" type="text/css">
-        <script src="../js/nolark.js"></script>
         <link rel="icon" href="../favicon.ico">
+        <script src="../js/nolark.js" type="text/javascript"></script>
     </head>
     <body>
-        <header>
-            <picture>
-                <source media="(max-width:576px)" srcset="../images/banniere_small.png">
-                <source srcset="../images/banniere.png">
-                <img src="../images/banniere.png" alt="Nolark : Protect your minds ! Cette bannière
-                     montre un coucher de soleil avec une femme embrassant un homme réalisant en
-                     stoppie sur sa moto.">
-                <!-- Image basée sur la création originale de ShiftGraphiX sur Pixabay :
-                https://pixabay.com/fr/couple-stoppie-sportive-vélomoteur-3156613/ -->
-            </picture>
-            <nav>
-                <input type="checkbox">
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul>
-                    <li><a href="../index.html">Accueil</a></li>
-                    <li><a href="route.html">Route</a></li>
-                    <li><a href="cross.html">Cross</a></li>
-                    <li><a href="piste.html">Piste</a></li>
-                    <li><a href="enfants.html">Enfants</a></li>
-                    <li><a href="nous-contacter.html">Nous contacter</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php
+            include('../includes/header.html.inc.php');
+        ?>
         <section id="carto">
             <h1>Nous localiser :</h1>
-            <img src="https://www.mapquestapi.com/staticmap/v5/map?key=bZNXQieHCY65xphzmzAPLTH1EQSKUDq0&locations=Toulon,Var,France|http://gil83.fr/nolark/marqueur_nolark.png&center=Châteauroux,Indre,France&zoom=6&size=600,610" alt="Carte OpenStreetMap statique avec le pays de Nolark">
-            <img src="https://www.mapquestapi.com/staticmap/v5/map?key=bZNXQieHCY65xphzmzAPLTH1EQSKUDq0&locations=Rond-Point Bir-Hackeim, La Rode, Toulon, Var, Provence-Alpes-Côte d'Azur, France métropolitaine, 83041, France|http://gil83.fr/nolark/marqueur_nolark.png&zoom=13&size=306,300" alt="Carte OpenStreetMap statique avec la ville de Nolark">
-            <img src="https://www.mapquestapi.com/staticmap/v5/map?key=bZNXQieHCY65xphzmzAPLTH1EQSKUDq0&locations=43.12115, 5.94037|http://gil83.fr/nolark/marqueur_nolark.png&zoom=18&size=306,300" alt="Carte OpenStreetMap statique avec l'emplacement de Nolark">
+            <img src="https://open.mapquestapi.com/staticmap/v5/map?key=bZNXQieHCY65xphzmzAPLTH1EQSKUDq0&locations=Toulon,Var,France|http://gil83.fr/nolark/marqueur_nolark.png&center=Châteauroux,Indre,France&zoom=6&size=600,610" alt="Carte OpenStreetMap statique avec le pays de Nolark">
+            <img src="https://open.mapquestapi.com/staticmap/v5/map?key=bZNXQieHCY65xphzmzAPLTH1EQSKUDq0&locations=Rond-Point Bir-Hackeim, La Rode, Toulon, Var, Provence-Alpes-Côte d'Azur, France métropolitaine, 83041, France|http://gil83.fr/nolark/marqueur_nolark.png&zoom=13&size=306,300" alt="Carte OpenStreetMap statique avec la ville de Nolark">
+            <img src="https://open.mapquestapi.com/staticmap/v5/map?key=bZNXQieHCY65xphzmzAPLTH1EQSKUDq0&locations=43.12115, 5.94037|http://gil83.fr/nolark/marqueur_nolark.png&zoom=18&size=306,300" alt="Carte OpenStreetMap statique avec l'emplacement de Nolark">
         </section>
         <section id="contact">
             <h1>Nous contacter :</h1>
-            <form id="form_contact" name="form_contact" action="http://gil83.fr/nolark/testforms.php" method="POST" target="_blank">
+            <form id="form_contact" name="form_contact" action="http://gil83.fr/nolark/testforms.php" method="POST">
                 <fieldset id="coordo">
                     <legend>Pour mieux vous connaître</legend>
                     <div><label for="i_nom">Votre nom :</label> <input type="text" name="i_nom" id="i_nom" size="35" pattern="^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ\s\-]+$" required><div class="input-validation"></div></div>
@@ -143,8 +121,8 @@
                 <div id="controles"><input type="button" id="btn_envoyer" name="sub_envoyer" value="Envoyer votre demande de contact"> <input type="reset" name="rst_annuler" value="Effacer les réponses"></div>
             </form>
         </section>
-        <footer>
-            <p>&copy;2018 Nolark - Créé par <a href="mailto:jose.gil@ac-nice.fr">José GIL</a><p>
-        </footer>
+        <?php
+            include('../includes/footer.inc.php');
+        ?>
     </body>
 </html>

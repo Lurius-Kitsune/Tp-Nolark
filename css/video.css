@@ -28,17 +28,19 @@
     padding-right: 10px;
     text-align: justify;
 }
-@media screen and (max-width:768px){
+
+/* Smartphone */
+@media screen and (max-width:768px) {
     #video {
         flex-direction: column;
     }
-    
     #video article {
-        width: 100%
+        width: auto;
+    }
+    #video article p {
+        padding-left: 10px;
     }
     #video iframe {
-            margin: 0px 9%;
-            width: 82%;
+        align-self: center;
     }
 }
-
