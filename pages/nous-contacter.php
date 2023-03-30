@@ -22,6 +22,7 @@
         <?php
             include('../includes/header.html.inc.php');
         ?>
+        <?php include('../includes/casques.inc.php'); ?>
         <section id="carto">
             <h1>Nous localiser :</h1>
             <img src="https://open.mapquestapi.com/staticmap/v5/map?key=bZNXQieHCY65xphzmzAPLTH1EQSKUDq0&locations=Toulon,Var,France|http://gil83.fr/nolark/marqueur_nolark.png&center=Châteauroux,Indre,France&zoom=6&size=600,610" alt="Carte OpenStreetMap statique avec le pays de Nolark">

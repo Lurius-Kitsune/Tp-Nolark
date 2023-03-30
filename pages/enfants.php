@@ -21,6 +21,7 @@
         <?php
             include('../includes/header.html.inc.php');
         ?>
+        <?php include('../includes/casques.inc.php'); ?>
         <section id="video">
             <article>
                 <img src="../images/attention.png" alt="Post-It : Penser à rentrer en vie">

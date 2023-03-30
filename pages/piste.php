@@ -20,6 +20,7 @@
         <?php
         include('../includes/header.html.inc.php');
         ?>
+        <?php include('../includes/casques.inc.php'); ?>
         <section id="casques">
             <!-- - - - - - - - - - - - - - LIGNE N°1 - - - - - - - - - - - - -->
             <article>
