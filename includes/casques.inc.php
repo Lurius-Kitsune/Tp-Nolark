@@ -1,5 +1,9 @@
 <?php
 
+//GEt filename
+$scriptName = filter_input(INPUT_SERVER, 'SCRIPT_NAME');
+$pageActuelle = substr($scriptName, strrpos($scriptName, '/') + 1);
+
 //COnnexion au SGBD
 $cnx = new PDO('mysql:host=127.0.0.1;dbname=nolark', 'nolarkuser', 'nolarkpwd');
 
@@ -14,6 +18,7 @@ $res = $cnx->query($req);
 // Affichage du resultat
 echo '<section id="casques">';
 while ($ligne = $res->fetch(PDO::FETCH_OBJ)) {
+    if($ligne->libelle.'.php' === $pageActuelle){
     echo '<article>';
     echo '<img src="../images/casques/', $ligne->libelle, '/', $ligne->image,
     '" alt="', $ligne->modele, '">';
@@ -30,5 +35,6 @@ while ($ligne = $res->fetch(PDO::FETCH_OBJ)) {
     echo '<p class="marque">', $ligne->nom, '</p>';
     echo '<p class="modele">', $ligne->modele, '</p>';
     echo '</article>';
+    }
 }
 echo '</section>';
