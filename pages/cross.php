@@ -18,11 +18,9 @@
     </head>
     <body>
         <?php
-            include('../includes/header.html.inc.php');
-        ?>
-        <?php include('../includes/casques.inc.php'); ?>
-        <?php
-            include('../includes/footer.inc.php');
+        include('../includes/header.html.inc.php');
+        include('../includes/casques.inc.php'); 
+        include('../includes/footer.inc.php');
         ?>
     </body>
 </html>

@@ -42,9 +42,9 @@
                     src="http://www.dailymotion.com/embed/video/xdl390">
             </iframe>
         </section>
-        <?php include('../includes/casques.inc.php'); ?>
         <?php
-            include('../includes/footer.inc.php');
+        include('../includes/casques.inc.php'); 
+        include('../includes/footer.inc.php');
         ?>
     </body>
 </html>
