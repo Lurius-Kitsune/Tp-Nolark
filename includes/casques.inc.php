@@ -13,7 +13,7 @@ try {
     $loader = new Twig_Loader_Filesystem('../tpl'); // Répertoire vers les templates
     // Initialisation de l'environnement Twig
     $twig = new Twig_Environment($loader, array(
-        'cache' => false,
+        'cache' => '../cache',
     ));
     $template = $twig->loadTemplate('casques.twig'); // Chargemement du template
     // Affectation des variables du template
