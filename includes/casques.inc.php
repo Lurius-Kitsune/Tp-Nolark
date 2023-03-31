@@ -1,35 +1,25 @@
 <?php
-
-//COnnexion au SGBD
-$cnx = new PDO('mysql:host=127.0.0.1;dbname=nolark', 'nolarkuser', 'nolarkpwd');
-
-// Creation de la requête
-$req = 'SELECT casque.id, nom, modele, libelle, prix, classement, image, stock';
-$req .= ' FROM casque INNER JOIN type ON casque.type=type.id';
-$req .= ' INNER JOIN marque ON casque.marque=marque.id';
-$req .= ' WHERE libelle = "'.substr($pageActuelle, 0, -4).'"';
-
-// Envoie de la requête
-$res = $cnx->query($req);
-
-// Affichage du resultat
-echo '<section id="casques">';
-while ($ligne = $res->fetch(PDO::FETCH_OBJ)) {
-    echo '<article>';
-    echo '<img src="../images/casques/', $ligne->libelle, '/', $ligne->image,
-    '" alt="', $ligne->modele, '">';
-    echo '<p class="prix">', $ligne->prix, ' €</p>';
-    if ($ligne->stock <= 0){
-        echo'<p class="stockko"><abbr data-tip="Sur commande uniquement">stock</abbr></p>';
-    }
-    else if ($ligne->stock <= 5){
-        echo'<p class="stockok"><abbr data-tip="Plus que ', $ligne->stock,' casques en stock...">stock</abbr></p>';
-    }
-    else {
-        echo'<p class="stockok"><abbr data-tip="', $ligne->stock,' casques en stock">stock</abbr></p>';
-    }
-    echo '<p class="marque">', $ligne->nom, '</p>';
-    echo '<p class="modele">', $ligne->modele, '</p>';
-    echo '</article>';
+require_once '../vendor/autoload.php'; // Autochargement des dépendances
+try {
+    // Requête SQL
+    $cnx = new PDO('mysql:host=127.0.0.1;dbname=nolark', 'nolarkuser', 'nolarkpwd');
+    $req = 'SELECT * FROM casque INNER JOIN type ON casque.type=type.id';
+    $req .= ' INNER JOIN marque ON casque.marque=marque.id';
+    $req .= ' WHERE libelle="' . substr($pageActuelle, 0, -4) . '"';
+    $res = $cnx->prepare($req);
+    $res->execute();
+    $res->fetch(PDO::FETCH_OBJ);
+    unset($cnx); // Fermeture connexio
+    $loader = new Twig_Loader_Filesystem('../tpl'); // Répertoire vers les templates
+    // Initialisation de l'environnement Twig
+    $twig = new Twig_Environment($loader, array(
+        'cache' => false,
+    ));
+    $template = $twig->loadTemplate('casques.twig'); // Chargemement du template
+    // Affectation des variables du template
+    echo $template->render(array(
+        'casques' => $res
+    ));
+} catch (PDOException $e) {
+    echo 'Erreur: ' . $e->getMessage();
 }
-echo '</section>';

@@ -1,0 +1,32 @@
+<section id="casques">
+	{% for casque in casques %}
+		<article>
+			<img src="../images/casques/{{ casque.libelle }}/{{ casque.image }}" alt="{{ casque.modele }}">
+			{% if casque.stock == -1 %}
+				{# Si le stock contient -1, c'est sur commande et stockko #}
+				<p class="stockko">
+					<abbr data-tip="Sur commande uniquement">stock</abbr>
+				</p>
+			{% elseif casque.stock >= 10 %}
+				{# Si le stock est supérieur ou égal à 10 on ne s'alarme pas #}
+				<p class="stockok">
+					<abbr data-tip="{{ casque.stock }} casques en stock">stock</abbr>
+				</p>
+			{% else %}
+				{# Sinon on commence par "plus que" #}
+				<p class="stockok">
+					<abbr data-tip="Plus que {{ casque.stock }} casques en stock...">stock</abbr>
+				</p>
+			{% endif %}
+			<p class="prix">{{ casque.prix }}€</p>
+			<p class="marque">{{ casque.nom }}</p>
+			<p class="modele">{{ casque.modele }}</p>
+			{% if casque.classement == 5 %}
+				{# Si le stock est supérieur ou égal à 10 on ne s'alarme pas #}
+				<img class="classement classement0{{ casque.classement }}" src="../images/casques/etoiles.gif" alt="Classement {{ (casque.classement/10)|replace({'.': " ,"}) }} sur 5">
+			{% else %}
+				<img class="classement classement{{ casque.classement }}" src="../images/casques/etoiles.gif" alt="Classement {{ (casque.classement/10)|replace({'.': " ,"}) }} sur 5">
+			{% endif %}
+		</article>
+	{% endfor %}
+</section>
