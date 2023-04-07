@@ -1,8 +1,8 @@
 <?php
 
 function SetInfoLettre($mail){
-    $req = "INSERT INTO NEWSLETTER"
-    . "VALUES :mail";
+    $req = "INSERT INTO NEWSLETTER  (mail)"
+    . "VALUES (:mail)";
     try{
         $nolarkBD = new PDO(
                 'mysql:host=localhost;dbname=nolark;charset=utf8',
@@ -14,7 +14,7 @@ function SetInfoLettre($mail){
         $resultat->execute([
             'mail' => $mail,
         ]);
-        echo $resultat ->fetchAll();
+        echo $resultat->fetchAll();
     } catch (Exception $ex) {
         die('Erreur : ' . $ex->getMessage());
     }
