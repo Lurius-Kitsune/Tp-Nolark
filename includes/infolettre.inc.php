@@ -1,37 +1,36 @@
 <?php
 
-function SetInfoLettre($mail){
+function SetInfoLettre($mail) {
     $req = "INSERT INTO NEWSLETTER  (mail)"
-    . "VALUES (:mail)";
-    try{
+            . " VALUES (:mail)";
+    try {
         $nolarkBD = new PDO(
                 'mysql:host=localhost;dbname=nolark;charset=utf8',
                 'nolarkadmin',
                 'nolarkadmin'
         );
-        
-        $resultat = $nolarkBD ->prepare($req);
+
+        $resultat = $nolarkBD->prepare($req);
         $resultat->execute([
             'mail' => $mail,
         ]);
-        echo $resultat->fetchAll();
     } catch (Exception $ex) {
         die('Erreur : ' . $ex->getMessage());
     }
 }
 
-function SetConsentement($mail){
+function SetConsentement($mail) {
     $req = "UPDATE NEWSLETTER"
-           ."SET consentement = True, datereceuil = CURRENT_TIMESTAMP()"
-           ."where mail = :mail";
-    try{
+            . " SET consentement = True, datereceuil = CURRENT_TIMESTAMP()"
+            . " where mail = :mail";
+    try {
         $nolarkBD = new PDO(
                 'mysql:host=localhost;dbname=nolark;charset=utf8',
                 'nolarkadmin',
                 'nolarkadmin'
         );
-        
-        $resultat = $nolarkBD ->prepare($req);
+
+        $resultat = $nolarkBD->prepare($req);
         $resultat->execute([
             'mail' => $mail,
         ]);
@@ -41,17 +40,17 @@ function SetConsentement($mail){
     }
 }
 
-function RemoveConsentement($mail){
+function RemoveConsentement($mail) {
     $req = "DELETE FROM NEWSLETTER"
-           ."where mail = :mail";
-    try{
+            . " where mail = :mail";
+    try {
         $nolarkBD = new PDO(
                 'mysql:host=localhost;dbname=nolark;charset=utf8',
                 'nolarkadmin',
                 'nolarkadmin'
         );
-        
-        $resultat = $nolarkBD ->prepare($req);
+
+        $resultat = $nolarkBD->prepare($req);
         $resultat->execute([
             'mail' => $mail,
         ]);
