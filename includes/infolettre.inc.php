@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    SetInfoLettre($_POST["mail"]);
+    SetInfoLettre($_POST["email"]);
 }
 
 function SetInfoLettre($mail) {
