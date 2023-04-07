@@ -20,6 +20,10 @@
         <?php
         include('../includes/header.html.inc.php');
         ?>
+        <form id="form_contact" name="form_infolettre" action="http://gil83.fr/nolark/testforms.php" method="POST">
+            <div><label for="email">Votre e-mail :</label> <input type="email" name="email" id="email" size="35" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required></div>
+            <input type="submit" id="btn_envoyer" name="sub_envoyer" value="Envoyer votre demande de contact">
+        </form>
         <?php
         include('../includes/footer.inc.php');
         ?>
