@@ -1,5 +1,9 @@
 <?php
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    SetInfoLettre($_POST["mail"]);
+}
+
 function SetInfoLettre($mail) {
     $req = "INSERT INTO NEWSLETTER  (mail)"
             . " VALUES (:mail)";
@@ -34,7 +38,7 @@ function SetConsentement($mail) {
         $resultat->execute([
             'mail' => $mail,
         ]);
-        if ($resultat->rowCount() == 0){
+        if ($resultat->rowCount() == 0) {
             throw 'Mail non-présent dans la bd';
         }
         echo 'Ligne modifier';
@@ -57,7 +61,7 @@ function RemoveConsentement($mail) {
         $resultat->execute([
             'mail' => $mail,
         ]);
-        if ($resultat->rowCount() == 0){
+        if ($resultat->rowCount() == 0) {
             throw 'Mail non-présent dans la bd';
         }
         echo 'Ligne modifier';
