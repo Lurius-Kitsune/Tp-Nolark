@@ -34,6 +34,9 @@ function SetConsentement($mail) {
         $resultat->execute([
             'mail' => $mail,
         ]);
+        if ($resultat->rowCount() == 0){
+            throw 'Mail non-présent dans la bd';
+        }
         echo 'Ligne modifier';
     } catch (Exception $ex) {
         die('Erreur : ' . $ex->getMessage());
@@ -54,6 +57,9 @@ function RemoveConsentement($mail) {
         $resultat->execute([
             'mail' => $mail,
         ]);
+        if ($resultat->rowCount() == 0){
+            throw 'Mail non-présent dans la bd';
+        }
         echo 'Ligne modifier';
     } catch (Exception $ex) {
         die('Erreur : ' . $ex->getMessage());
